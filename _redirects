@@ -25,5 +25,5 @@ https://medium.guilherr.me https://eguadoartigo.iagocavalcante.dev 301!
 http://seo.guilherr.me url=:url device=:device https://googlechrome.github.io/lighthouse/viewer/?psiurl=:url&strategy=:device&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext 301!
 https://seo.guilherr.me url=:url device=:device https://googlechrome.github.io/lighthouse/viewer/?psiurl=:url&strategy=:device&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext 301!
 
-http://cms.guilherr.me https://app.forestry.io/dashboard
-https://cms.guilherr.me https://app.forestry.io/dashboard
+http://cms.guilherr.me https://app.forestry.io/dashboard 301!
+https://cms.guilherr.me https://app.forestry.io/dashboard 301!
