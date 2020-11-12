@@ -36,3 +36,6 @@ https://whatsapp.guilherr.me https://api.whatsapp.com/send?phone=5527996334936 3
 
 http://mail.guilherr.me /mail.html 200!
 https://mail.guilherr.me /mail.html 200!
+
+http://search.guilherr.me https://search.google.com/search-console?resource_id=sc-domain%3Aguilherr.me 301!
+https://search.guilherr.me https://search.google.com/search-console?resource_id=sc-domain%3Aguilherr.me 301!
