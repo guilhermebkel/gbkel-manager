@@ -34,11 +34,11 @@ https://mailer.guilherr.me https://app.mailerlite.com/dashboard 301!
 http://whatsapp.guilherr.me https://api.whatsapp.com/send?phone=5527996334936 301!
 https://whatsapp.guilherr.me https://api.whatsapp.com/send?phone=5527996334936 301!
 
-http://blog.guilherr.me/* https://guilherr.me/:splat 200!
-https://blog.guilherr.me/* https://guilherr.me/:splat 200!
-
 http://blog.guilherr.me https://guilherr.me/blog 200!
 https://blog.guilherr.me https://guilherr.me/blog 200!
+
+http://blog.guilherr.me/* https://guilherr.me/:splat 200!
+https://blog.guilherr.me/* https://guilherr.me/:splat 200!
 
 http://mail.guilherr.me /mail.html 200!
 https://mail.guilherr.me /mail.html 200!
