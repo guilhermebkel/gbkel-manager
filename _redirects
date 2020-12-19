@@ -69,3 +69,6 @@ https://code.guilherr.mr https://www.beautifulcodes.in 301!
 
 http://trends.guilherr.me https://bloggingfordevs.com/trends 301!
 https://trends.guilherr.me https://bloggingfordevs.com/trends 301!
+
+http://static.guilherr.me/* /:splat 200!
+https://static.guilherr.me/* /:splat 200!
