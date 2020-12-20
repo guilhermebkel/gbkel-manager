@@ -72,3 +72,9 @@ https://trends.guilherr.me https://bloggingfordevs.com/trends 301!
 
 http://static.guilherr.me/* /static/:splat 200!
 https://static.guilherr.me/* /static/:splat 200!
+
+http://ga.guilherr.me https://analytics.google.com/analytics/web/#/report-home/a140879800w201912662p195809126 301!
+https://ga.guilherr.me https://analytics.google.com/analytics/web/#/report-home/a140879800w201912662p195809126 301!
+
+http://gtm.guilherr.me https://tagmanager.google.com/?authuser=1#/container/accounts/6002534864/containers/35105475/workspaces/3/tags 301!
+https://gtm.guilherr.me https://tagmanager.google.com/?authuser=1#/container/accounts/6002534864/containers/35105475/workspaces/3/tags 301!
