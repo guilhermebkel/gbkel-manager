@@ -1,9 +1,56 @@
 <!DOCTYPE html> 
 <html> 
+	<head>
+		<title>Guilherme Mota</title>
+
+		<link rel="stylesheet" href="https://static.guilherr.me/stylesheet.css"></link>
+
+		<style>
+			body {
+				width: 100vw;
+				height: 100vh;
+
+				background-color: var(--black-color-1);
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		</style>
+	</head>
 	<body>
 		<script>
 			var mail = "guilhermebromonschenkel@gmail.com"
+			var mailUrl = `mailto:${mail}`
 
+			function addRedirectMetaTag () {
+				const metaTagElement = document.createElement("meta")
+
+				metaTagElement.setAttribute("http-equiv", "refresh")
+				metaTagElement.setAttribute("content", `2; url = ${mailUrl}`)
+
+				document.head.appendChild(metaTagElement)
+			}
+
+			function addMailButton () {
+				const textNode = document.createTextNode(mail)
+
+				const buttonElement = document.createElement("button")
+				buttonElement.setAttribute("id", "mail-button")
+				buttonElement.appendChild(textNode)
+
+				const linkElement = document.createElement("a")
+				linkElement.href = mailUrl
+				linkElement.target = "_top"
+
+				linkElement.appendChild(buttonElement)
+				
+				document.body.appendChild(linkElement)
+			}
+
+			// addRedirectMetaTag()
+			addMailButton()
+/*
 			var linkElement = document.createElement("a")
 			linkElement.style.visibility = "hidden"
 			linkElement.style.position = "absolute"
@@ -13,6 +60,7 @@
 			document.body.appendChild(linkElement)
 			
 			linkElement.click()
+*/
 		</script>
 	</body> 
 </html> 
