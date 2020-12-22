@@ -3,10 +3,13 @@
 	<body>
 		<script>
 			var mail = "guilhermebromonschenkel@gmail.com"
+
 			var linkElement = document.createElement("a")
 			linkElement.style.visibility = "hidden"
 			linkElement.style.position = "absolute"
 			linkElement.href = `mailto:${mail}`
+			linkElement.target = "_top"
+			
 			document.body.appendChild(linkElement)
 			
 			linkElement.click()
