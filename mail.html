@@ -1,7 +1,17 @@
 <!DOCTYPE html> 
 <html> 
-	<body
-		onload="javascript:document.location='mailto:guilhermebromonschenkel@gmail.com'"
-	> 
+	<head>
+		<script>
+			var mail = "guilhermebromonschenkel@gmail.com"
+			var linkElement = document.createElement("a")
+			linkElement.style.visibility = "hidden"
+			linkElement.style.position = "absolute"
+			linkElement.href = `mailto:${mail}`
+			document.body.appendChild(linkElement)
+			
+			linkElement.click()
+		</script>
+	</head>
+	<body> 
 	</body> 
 </html> 
