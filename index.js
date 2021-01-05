@@ -77,9 +77,25 @@ const buildFolderHTML = (dirItems = dirItems) => {
 		<!DOCTYPE html> 
 		<html> 
 			<body>
-				${dirItems.map(item => (
-					`<a href="${item.main.relativePath}" target="_blank">${item.main.name}</a>`
-				)).join("<br></br>")}
+				${dirItems.map(item => {
+					const isFolder = item.type === "folder"
+
+					return (
+						`
+							<a
+								href="${item.main.relativePath}"
+								target="${isFolder ? "_self" : "_blank"}"
+							>
+								${isFolder ? (
+									`<br>/${item.main.name}</br>`
+								) : (
+									item.main.name
+								)}
+								
+							</a>
+						`
+					)
+				}).join("<br></br>")}
 			</body> 
 		</html> 
 	`
