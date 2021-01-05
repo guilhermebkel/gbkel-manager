@@ -78,11 +78,16 @@ const buildFolderHTML = (dirItems = dirItems) => {
 		<html> 
 			<body>
 				${dirItems.map(item => (
-					`<a href="${item.main.relativePath}" target="_blank">${item.main.name}</a>`
+					`
+						<a href="${item.main.relativePath}" target="_blank">${item.main.name}</a>
+						<br></br>
+					`
 				))}
 			</body> 
 		</html> 
 	`
+
+	return folderHTML
 }
 
 const folderToHTML = async () => {
