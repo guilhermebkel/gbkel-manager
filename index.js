@@ -91,7 +91,6 @@ const buildFolderHTML = (dirItems = dirItems) => {
 								) : (
 									item.main.name
 								)}
-								
 							</a>
 						`
 					)
