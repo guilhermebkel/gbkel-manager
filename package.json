@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node index.js"
+    "build:folder-to-html": "node folderToHTML.js",
+    "build": "npm run build:folder-to-html"
   },
   "repository": {
     "type": "git",
