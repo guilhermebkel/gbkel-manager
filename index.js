@@ -78,11 +78,8 @@ const buildFolderHTML = (dirItems = dirItems) => {
 		<html> 
 			<body>
 				${dirItems.map(item => (
-					`
-						<a href="${item.main.relativePath}" target="_blank">${item.main.name}</a>
-						<br></br>
-					`
-				))}
+					`<a href="${item.main.relativePath}" target="_blank">${item.main.name}</a>`
+				)).join("<br></br>")}
 			</body> 
 		</html> 
 	`
