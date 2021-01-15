@@ -13,7 +13,7 @@ const buildRedirectsHTML = (redirects = []) => {
 				${redirects.map(redirect => (
 					`
 					<p>
-						${redirect.split("\n")[1]}
+						${redirect}
 					</p>
 					`
 				)).join("")}
@@ -31,7 +31,9 @@ const redirectsToHTML = async () => {
 
 	const redirects = redirectsFile.toString().split("\n\n")
 
-	const redirectsHTML = buildRedirectsHTML(redirects)
+	const httpsRedirects = redirects.map(redirect => redirect.split("\n")[1])
+
+	const redirectsHTML = buildRedirectsHTML(httpsRedirects)
 
 	const redirectsHTMLPath = path.join(__dirname, "redirects.html")
 
