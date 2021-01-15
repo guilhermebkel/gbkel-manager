@@ -16,7 +16,7 @@ const buildRedirectsHTML = (redirects = []) => {
 						${redirect}
 					</p>
 					`
-				)).join("<br></br>")}
+				)).join("")}
 			</body> 
 		</html> 
 	`
