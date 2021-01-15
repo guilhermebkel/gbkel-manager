@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build:folder-to-html": "node folderToHTML.js",
-    "build": "npm run build:folder-to-html"
+    "build:redirects": "cp _redirects redirects.html",
+    "build": "npm run build:folder-to-html && npm run build:redirects"
   },
   "repository": {
     "type": "git",
