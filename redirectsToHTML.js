@@ -5,14 +5,18 @@ const STATIC_FOLDER_NAME = "static"
 
 
 
-const buildRedirectsHTML = (redirects) => {
+const buildRedirectsHTML = (redirects = []) => {
 	const folderHTML = `
 		<!DOCTYPE html> 
 		<html> 
 			<body>
-				<p>
-					${redirects}
-				</p>
+				${redirects.map(redirect => (
+					`
+					<p>
+						${redirect}
+					</p>
+					`
+				)).join("<br></br>")}
 			</body> 
 		</html> 
 	`
@@ -25,7 +29,9 @@ const redirectsToHTML = async () => {
 
 	const redirectsFile = await fs.promises.readFile(redirectsFilePath)
 
-	const redirectsHTML = buildRedirectsHTML(redirectsFile)
+	const redirects = redirectsFile.toString().split("\n\n")
+
+	const redirectsHTML = buildRedirectsHTML(redirects)
 
 	const redirectsHTMLPath = path.join(__dirname, "redirects.html")
 
