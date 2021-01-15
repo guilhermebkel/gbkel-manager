@@ -13,7 +13,7 @@ const buildRedirectsHTML = (redirects = []) => {
 				${redirects.map(redirect => (
 					`
 					<p>
-						${redirect}
+						${redirect.split("\n")[1]}
 					</p>
 					`
 				)).join("")}
