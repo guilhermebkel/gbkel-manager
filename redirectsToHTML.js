@@ -12,7 +12,7 @@ const buildRedirectsHTML = (redirects) => {
 			<body>
 				<p>
 					${redirects}
-				</p
+				</p>
 			</body> 
 		</html> 
 	`
