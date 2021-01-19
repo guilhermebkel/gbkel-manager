@@ -3,6 +3,7 @@ function getDefaultHead({ pageName }) {
 		<link rel="icon" href="https://static.guilherr.me/image/logo/logo-2-black.png" />
 		<link rel="stylesheet" href="https://static.guilherr.me/css/stylesheet.css"></link>
 		<link rel="stylesheet" href="https://static.guilherr.me/css/font.css"></link>
+		<script src="https://static.guilherr.me/js/gtm.js"></script>
 		<title>${pageName} | Guilherme Mota</title>
 	`;
 
