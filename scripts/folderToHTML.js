@@ -1,5 +1,6 @@
 const fs = require("fs")
 const path = require("path")
+const { getDefaultHead } = require("../utils/html")
 
 const STATIC_FOLDER_NAME = "static"
 
@@ -77,10 +78,9 @@ const buildFolderHTML = (dirItems = dirItems) => {
 		<!DOCTYPE html> 
 		<html>
 			<head>
-				<link rel="icon" href="https://static.guilherr.me/image/logo/logo-2-black.png" />
-				<link rel="stylesheet" href="https://static.guilherr.me/css/stylesheet.css"></link>
-				<link rel="stylesheet" href="https://static.guilherr.me/css/font.css"></link>
-				<title>Redirects | Guilherme Mota</title>
+				${getDefaultHead({
+					pageName: "Redirects"
+				})}
 			</head>
 			<body>
 				${dirItems.map(item => {

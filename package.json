@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:folder-to-html": "node folderToHTML.js",
-    "build:redirects-to-html": "node redirectsToHTML.js",
+    "build:folder-to-html": "node scripts/folderToHTML.js",
+    "build:redirects-to-html": "node scripts/redirectsToHTML.js",
     "build": "npm run build:folder-to-html && npm run build:redirects-to-html"
   },
   "repository": {

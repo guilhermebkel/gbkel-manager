@@ -1,10 +1,16 @@
 const fs = require("fs")
 const path = require("path")
+const { getDefaultHead } = require("../utils/html")
 
 const buildRedirectsHTML = (redirects = []) => {
 	const folderHTML = `
 		<!DOCTYPE html> 
-		<html> 
+		<html>
+			<head>
+				${getDefaultHead({
+					pageName: "Redirects"
+				})}
+			</head>
 			<body>
 				${redirects.map(redirect => (
 					`
