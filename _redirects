@@ -13,6 +13,9 @@ https://talk.guilherr.me https://whereby.com/guilhermemota 301!
 http://github.guilherr.me https://github.com/guilhermebkel 301!
 https://github.guilherr.me https://github.com/guilhermebkel 301!
 
+http://github.guilherr.me/* https://github.com/guilhermebkel/:splat 301!
+https://github.guilherr.me/* https://github.com/guilhermebkel/:splat 301!
+
 http://gist.guilherr.me https://gist.github.com/guilhermebkel 301!
 https://gist.guilherr.me https://gist.github.com/guilhermebkel 301!
 
