@@ -4,7 +4,7 @@ const { getDefaultHead } = require("../utils/html")
 
 const STATIC_FOLDER_NAME = "static"
 
-const staticFolder = path.join(__dirname, STATIC_FOLDER_NAME)
+const staticFolder = path.join(__dirname, "..", STATIC_FOLDER_NAME)
 
 const dirItems = [
 	{

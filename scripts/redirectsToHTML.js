@@ -2,6 +2,10 @@ const fs = require("fs")
 const path = require("path")
 const { getDefaultHead } = require("../utils/html")
 
+const getFilePath = (fileName) => {
+	return path.join(__dirname, "..", fileName)
+}
+
 const buildRedirectsHTML = (redirects = []) => {
 	const folderHTML = `
 		<!DOCTYPE html> 
@@ -27,7 +31,7 @@ const buildRedirectsHTML = (redirects = []) => {
 }
 
 const redirectsToHTML = async () => {
-	const redirectsFilePath = path.join(__dirname, "_redirects")
+	const redirectsFilePath = getFilePath("_redirects")
 
 	const redirectsFile = await fs.promises.readFile(redirectsFilePath)
 
@@ -37,7 +41,7 @@ const redirectsToHTML = async () => {
 
 	const redirectsHTML = buildRedirectsHTML(httpsRedirects)
 
-	const redirectsHTMLPath = path.join(__dirname, "redirects.html")
+	const redirectsHTMLPath = getFilePath("redirects.html")
 
 	await fs.promises.writeFile(redirectsHTMLPath, redirectsHTML)
 }
