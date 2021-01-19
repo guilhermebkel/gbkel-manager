@@ -33,7 +33,7 @@
 	};
 
 	function renderCSS({ selector, value }) {
-		style = livePreviewDocument.createElement("style");
+		const style = livePreviewDocument.createElement("style");
 
 		const cssCode = `${selector} {${value}}`;
 
