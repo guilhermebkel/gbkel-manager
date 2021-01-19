@@ -38,6 +38,9 @@
 	</head>
 	<body>
 		<script>
+			renderDefaultHead({ pageName: "Mail" })
+			renderDefaultBackground({ selector: "body" })
+
 			var mail = "guilhermebromonschenkel@gmail.com"
 			var mailUrl = `mailto:${mail}`
 
@@ -68,9 +71,6 @@
 
 			addRedirectMetaTag()
 			addMailButton()
-
-			renderDefaultHead({ pageName: "Mail" })
-			renderDefaultBackground({ selector: "body" })
 		</script>
 	</body> 
 </html> 
