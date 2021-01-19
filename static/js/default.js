@@ -32,7 +32,7 @@ function getDefaultBackground() {
 };
 
 function renderCSS({ selector, value }) {
-	const style = livePreviewDocument.createElement("style");
+	const style = document.createElement("style");
 
 	const cssCode = `${selector} {${value}}`;
 
