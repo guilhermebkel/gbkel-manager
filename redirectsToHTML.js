@@ -1,10 +1,6 @@
 const fs = require("fs")
 const path = require("path")
 
-const STATIC_FOLDER_NAME = "static"
-
-
-
 const buildRedirectsHTML = (redirects = []) => {
 	const folderHTML = `
 		<!DOCTYPE html> 
