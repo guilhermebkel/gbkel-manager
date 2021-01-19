@@ -40,7 +40,9 @@ function renderCSS({ selector, value }) {
 };
 
 function renderDefaultHead({ pageName }) {
-	document.head.innerHTML += getDefaultHead({ pageName });
+	const defaultHead = getDefaultHead({ pageName });
+
+	document.head.innerHTML += defaultHead;
 };
 
 function renderDefaultBackground({ selector }) {
