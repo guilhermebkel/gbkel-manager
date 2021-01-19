@@ -78,40 +78,50 @@ button {
 
 a {
   text-decoration: none;
+
   font-weight: 400;
   font-size: 2rem;
+
   padding-right: 1rem;
+
   line-height: 3rem;
+
   color: var(--gray-color-15);
+
   display: inline-block;
   vertical-align: middle;
+
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
+
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
   overflow: hidden;
-  @media (min-width: 768px) {
-    &:hover {
-      color: var(--gray-color-15);
-    }
-    &:before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      left: 0;
-      right: 100%;
-      bottom: 0;
-      height: 1.4rem;
-      background: var(--purple-color);
-      -webkit-transition-property: right;
-      transition-property: right;
-      -webkit-transition-duration: 0.3s;
-      transition-duration: 0.3s;
-      -webkit-transition-timing-function: ease-out;
-      transition-timing-function: ease-out;
-    }
-    &:hover:before, &:focus:before, &:active:before {
-      right: 0;
-    }
+}
+
+@media (min-width: 768px) {
+  a:hover {
+    color: var(--gray-color-15);
+  }
+
+  a:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    height: 1.4rem;
+    background: var(--purple-color);
+    -webkit-transition-property: right;
+    transition-property: right;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+
+  a:hover:before, a:focus:before, a:active:before {
+    right: 0;
   }
 }
