@@ -16,9 +16,6 @@ function getDefaultHead({ pageName }) {
 
 function getDefaultBackground() {
 	const defaultBackground = `
-		height: 100%;
-		width: 100%;
-
 		background-color: var(--black-color-1);
 
 		background-image: 
