@@ -1,6 +1,5 @@
 const fs = require("fs")
 const path = require("path")
-const { getDefaultHead } = require("../utils/html")
 
 const STATIC_FOLDER_NAME = "static"
 
@@ -78,9 +77,7 @@ const buildFolderHTML = (dirItems = dirItems) => {
 		<!DOCTYPE html> 
 		<html>
 			<head>
-				${getDefaultHead({
-					pageName: "Redirects"
-				})}
+				<script src="https://static.guilherr.me/js/default.js"></script>
 			</head>
 			<body>
 				${dirItems.map(item => {
@@ -101,6 +98,11 @@ const buildFolderHTML = (dirItems = dirItems) => {
 						`
 					)
 				}).join("<br></br>")}
+
+				<script>
+					renderDefaultHead({ pageName: "Static" })
+					renderDefaultBackground({ selector: "body" })
+				</script>
 			</body> 
 		</html> 
 	`

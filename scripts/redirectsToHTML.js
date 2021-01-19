@@ -1,6 +1,5 @@
 const fs = require("fs")
 const path = require("path")
-const { getDefaultHead } = require("../utils/html")
 
 const getFilePath = (fileName) => {
 	return path.join(__dirname, "..", fileName)
@@ -11,9 +10,7 @@ const buildRedirectsHTML = (redirects = []) => {
 		<!DOCTYPE html> 
 		<html>
 			<head>
-				${getDefaultHead({
-					pageName: "Redirects"
-				})}
+				<script src="https://static.guilherr.me/js/default.js"></script>
 			</head>
 			<body>
 				${redirects.map(redirect => (
@@ -23,8 +20,12 @@ const buildRedirectsHTML = (redirects = []) => {
 					</p>
 					`
 				)).join("")}
-			</body> 
-		</html> 
+			</body>
+			<script>
+				renderDefaultHead({ pageName: "Redirects" })
+				renderDefaultBackground({ selector: "body" })
+			</script>
+		</html>
 	`
 
 	return folderHTML

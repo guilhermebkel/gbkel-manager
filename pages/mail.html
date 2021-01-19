@@ -3,10 +3,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<title>Mail | Guilherme Mota</title>
-
-		<link rel="icon" href="https://static.guilherr.me/image/logo/logo-2-black.png" />
-		<link rel="stylesheet" href="https://static.guilherr.me/css/stylesheet.css"></link>
+		<script src="https://static.guilherr.me/js/default.js"></script>
 
 		<style>
 			html {
@@ -14,24 +11,6 @@
 
 				height: 100%;
 				width: 100%;
-			}
-
-			body {
-				height: 100%;
-				width: 100%;
-
-				overflow: hidden;
-
-				background-color: var(--black-color-1);
-
-				background-image: 
-					radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.2) 2%, transparent 0%), 
-					radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.2) 2%, transparent 0%);
-				background-size: 100px 100px;
-
-				display: flex;
-				align-items: center;
-				justify-content: center;
 			}
 
 			button {
@@ -89,6 +68,9 @@
 
 			addRedirectMetaTag()
 			addMailButton()
+
+			renderDefaultHead({ pageName: "Mail" })
+			renderDefaultBackground({ selector: "body" })
 		</script>
 	</body> 
 </html> 
