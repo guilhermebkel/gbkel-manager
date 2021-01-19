@@ -10,6 +10,11 @@ const buildRedirectsHTML = (redirects = []) => {
 		<!DOCTYPE html> 
 		<html>
 			<head>
+				<style>
+					p {
+						color: var(--gray-color-15) !important;
+					}
+				</style>
 				<script src="https://static.guilherr.me/js/default.js"></script>
 			</head>
 			<body>
