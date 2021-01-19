@@ -43,8 +43,8 @@ https://blog.guilherr.me https://guilherr.me/blog 200!
 http://blog.guilherr.me/* https://guilherr.me/:splat 200!
 https://blog.guilherr.me/* https://guilherr.me/:splat 200!
 
-http://mail.guilherr.me /mail.html 200!
-https://mail.guilherr.me /mail.html 200!
+http://mail.guilherr.me /pages/mail.html 200!
+https://mail.guilherr.me /pages/mail.html 200!
 
 http://search.guilherr.me https://search.google.com/search-console?resource_id=sc-domain%3Aguilherr.me 301!
 https://search.guilherr.me https://search.google.com/search-console?resource_id=sc-domain%3Aguilherr.me 301!
