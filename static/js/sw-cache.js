@@ -30,6 +30,8 @@ window.ServiceWorkerCache = {
 			this.setCache(key, version)
 	
 			await this.clearAllServiceWorkerCache()
+
+			window.location.reload()
 		}
 	}
 }
