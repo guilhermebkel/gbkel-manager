@@ -111,3 +111,6 @@ https://review.guilherr.me https://app.refiner.io 301!
 
 http://monitoring.guilherr.me https://captain.gce.guilherr.me/net-data-monitor 301!
 https://monitoring.guilherr.me https://captain.gce.guilherr.me/net-data-monitor 301!
+
+http://ide.guilherr.me/:organization/:repository https://github1s.com/:organization/:repository 301!
+https://ide.guilherr.me/:organization/:repository https://github1s.com/:organization/:repository 301!
