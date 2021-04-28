@@ -58,7 +58,7 @@ const syncNetlifyRedirectsFile = async (domainAliases) => {
 		return `http://${from} https://${to} ${statusCode}!\nhttps://${from} https://${to} ${statusCode}!`
 	}).join("\n\n")
 
-	const redirectsFilePath = path.join(__dirname, "..", "_redirects")
+	const redirectsFilePath = path.join(__dirname, "..", "_redirects2")
 
 	await fs.promises.writeFile(redirectsFilePath, redirectsFileContent)
 }
