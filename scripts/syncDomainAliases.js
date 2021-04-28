@@ -18,17 +18,13 @@ const getDomainAliases = async () => {
 const addDomainOnNetlify = async (domain) => {
 	const netlifySiteInfo = await getNetlifySiteInfo()
 
-	const record = await netlify.createDnsRecord({
-		zoneId: netlifySiteInfo.zoneId,
+	await netlify.createDnsRecord({
+		zone_id: netlifySiteInfo.zoneId,
 		body: {
 			hostname: domain,
 			value: netlifySiteInfo.defaultDomain,
-			type: "NETLIFYv6"
+			type: "CNAME"
 		}
-	})
-
-	await netlify.provisionSiteTLSCertificate({
-		site_id: record.site_id
 	})
 }
 
@@ -39,16 +35,20 @@ const removeDomainFromNetlify = async (domain) => {
 		zone_id: netlifySiteInfo.zoneId
 	})
 	
-	const selectedRecord = dnsRecords.find(({ hostname }) => hostname === domain)
+	const selectedRecords = dnsRecords.find(({ hostname }) => hostname === domain)
 
-	if (selectedRecord) {
+	if (selectedRecords.length) {
 		return null
 	}
 
-	await netlify.deleteDnsRecord({
-		dns_record_id: selectedRecord.id,
-		zone_id: zoneId
-	})
+	await Promise.all(
+		selectedRecords.map(record => (
+			netlify.deleteDnsRecord({
+				dns_record_id: record.id,
+				zone_id: zoneId
+			})
+		))
+	)
 }
 
 const syncNetlifyRedirectsFile = async (domainAliases) => {
@@ -58,7 +58,7 @@ const syncNetlifyRedirectsFile = async (domainAliases) => {
 		return `http://${from} https://${to} ${statusCode}!\nhttps://${from} https://${to} ${statusCode}!`
 	}).join("\n\n")
 
-	const redirectsFilePath = path.join(__dirname, "..", "_redirects2")
+	const redirectsFilePath = path.join(__dirname, "..", "_redirects")
 
 	await fs.promises.writeFile(redirectsFilePath, redirectsFileContent)
 }
@@ -98,7 +98,7 @@ const syncDomainAliases = async () => {
 			await getNetlifySiteInfo(),
 			await getDomainAliases()
 		])
-	
+
 		const serializedDomainAliasesHosts = serializeDomainAliasesHosts(domainAliases)
 	
 		const domainsToAddOnNetlify = serializedDomainAliasesHosts.filter((from) => !netlifySiteInfo.domainAliases.includes(from))
