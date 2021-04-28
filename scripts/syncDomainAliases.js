@@ -15,40 +15,15 @@ const getDomainAliases = async () => {
 	return domainAliases
 }
 
-const addDomainOnNetlify = async (domain) => {
+const syncDomainsOnNetlify = async (domains = []) => {
 	const netlifySiteInfo = await getNetlifySiteInfo()
 
-	await netlify.createDnsRecord({
-		zone_id: netlifySiteInfo.zoneId,
+	await netlify.updateSite({
+		site_id: netlifySiteInfo.siteId,
 		body: {
-			hostname: domain,
-			value: netlifySiteInfo.defaultDomain,
-			type: "CNAME"
+			domain_aliases: domains
 		}
 	})
-}
-
-const removeDomainFromNetlify = async (domain) => {
-	const netlifySiteInfo = await getNetlifySiteInfo()
-
-	const dnsRecords = await netlify.getDnsRecords({
-		zone_id: netlifySiteInfo.zoneId
-	})
-	
-	const selectedRecords = dnsRecords.filter(({ hostname }) => hostname === domain)
-
-	if (selectedRecords.length) {
-		return null
-	}
-
-	await Promise.all(
-		selectedRecords.map(record => (
-			netlify.deleteDnsRecord({
-				dns_record_id: record.id,
-				zone_id: zoneId
-			})
-		))
-	)
 }
 
 const syncNetlifyRedirectsFile = async (domainAliases) => {
@@ -94,18 +69,11 @@ const serializeDomainAliasesHosts = (domainAliases) => {
 
 const syncDomainAliases = async () => {
 	try {
-		const [netlifySiteInfo, { domainAliases }] = await Promise.all([
-			await getNetlifySiteInfo(),
-			await getDomainAliases()
-		])
+		const { domainAliases } = await getDomainAliases()
 
 		const serializedDomainAliasesHosts = serializeDomainAliasesHosts(domainAliases)
 	
-		const domainsToAddOnNetlify = serializedDomainAliasesHosts.filter((from) => !netlifySiteInfo.domainAliases.includes(from))
-		const domainsToRemoveFromNetlify = netlifySiteInfo.domainAliases.filter((domainAlias) => !serializedDomainAliasesHosts.includes(domainAlias))
-		
-		await Promise.all(domainsToAddOnNetlify.map(addDomainOnNetlify))
-		await Promise.all(domainsToRemoveFromNetlify.map(removeDomainFromNetlify))
+		await syncDomainsOnNetlify(serializedDomainAliasesHosts)
 
 		await syncNetlifyRedirectsFile(domainAliases)
 	} catch (error) {
