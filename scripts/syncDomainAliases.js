@@ -10,7 +10,7 @@ const getDomainAliases = async () => {
 
 	const rawDomainAliases = await fs.promises.readFile(domainAliasesFilePath)
 
-	const domainAliases = JSON.parse(rawDomainAliases)
+	const { domainAliases } = JSON.parse(rawDomainAliases)
 
 	return domainAliases
 }
@@ -69,7 +69,7 @@ const serializeDomainAliasesHosts = (domainAliases) => {
 
 const syncDomainAliases = async () => {
 	try {
-		const { domainAliases } = await getDomainAliases()
+		const domainAliases = await getDomainAliases()
 
 		const serializedDomainAliasesHosts = serializeDomainAliasesHosts(domainAliases)
 	
