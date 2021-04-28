@@ -35,7 +35,7 @@ const removeDomainFromNetlify = async (domain) => {
 		zone_id: netlifySiteInfo.zoneId
 	})
 	
-	const selectedRecords = dnsRecords.find(({ hostname }) => hostname === domain)
+	const selectedRecords = dnsRecords.filter(({ hostname }) => hostname === domain)
 
 	if (selectedRecords.length) {
 		return null
