@@ -2,202 +2,197 @@
 	"domainAliases": [
 		{
 			"from": "cv.guilherr.me",
-			"to": "sourcerer.io/guilhermebkel",
+			"to": "https://sourcerer.io/guilhermebkel",
 			"statusCode": 301
 		},
 		{
 			"from": "instance.guilherr.me",
-			"to": "captain.gce.guilherr.me",
+			"to": "https://captain.gce.guilherr.me",
 			"statusCode": 301
 		},
 		{
 			"from": "linkedin.guilherr.me",
-			"to": "linkedin.com/in/guilhermebkel",
+			"to": "https://linkedin.com/in/guilhermebkel",
 			"statusCode": 301
 		},
 		{
 			"from": "talk.guilherr.me",
-			"to": "whereby.com/guilhermemota",
+			"to": "https://whereby.com/guilhermemota",
 			"statusCode": 301
 		},
 		{
 			"from": "gist.guilherr.me",
-			"to": "gist.github.com/guilhermebkel",
+			"to": "https://gist.github.com/guilhermebkel",
 			"statusCode": 301
 		},
 		{
 			"from": "emoji.guilherr.me",
-			"to": "nolanlawson.github.io/emoji-picker-element",
+			"to": "https://nolanlawson.github.io/emoji-picker-element",
 			"statusCode": 301
 		},
 		{
 			"from": "medium.guilherr.me",
-			"to": "eguadoartigo.iagocavalcante.dev",
+			"to": "https://eguadoartigo.iagocavalcante.dev",
 			"statusCode": 301
 		},
 		{
 			"from": "seo.guilherr.me/:url/:device",
-			"to": "googlechrome.github.io/lighthouse/viewer/?psiurl=https%3A%2F%2F:url&strategy=:device&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext",
+			"to": "https://googlechrome.github.io/lighthouse/viewer/?psiurl=https%3A%2F%2F:url&strategy=:device&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext",
 			"statusCode": 301
 		},
 		{
 			"from": "cms.guilherr.me",
-			"to": "app.forestry.io/dashboard",
+			"to": "https://app.forestry.io/dashboard",
 			"statusCode": 301
 		},
 		{
 			"from": "mailer.guilherr.me",
-			"to": "app.mailerlite.com/dashboard",
+			"to": "https://app.mailerlite.com/dashboard",
 			"statusCode": 301
 		},
 		{
 			"from": "whatsapp.guilherr.me",
-			"to": "api.whatsapp.com/send?phone=5527996334936",
+			"to": "https://api.whatsapp.com/send?phone=5527996334936",
 			"statusCode": 301
 		},
 		{
 			"from": "blog.guilherr.me",
-			"to": "guilherr.me/blog",
+			"to": "https://guilherr.me/blog",
 			"statusCode": 200
 		},
 		{
 			"from": "blog.guilherr.me/*",
-			"to": "guilherr.me/:splat",
+			"to": "https://guilherr.me/:splat",
 			"statusCode": 200
 		},
 		{
 			"from": "mail.guilherr.me",
-			"to": "pages/mail.html",
+			"to": "/pages/mail.html",
 			"statusCode": 200
 		},
 		{
 			"from": "search.guilherr.me",
-			"to": "search.google.com/search-console?resource_id=sc-domain%3Aguilherr.me",
+			"to": "https://search.google.com/search-console?resource_id=sc-domain%3Aguilherr.me",
 			"statusCode": 301
 		},
 		{
 			"from": "metatags.guilherr.me",
-			"to": "metatags.io",
+			"to": "https://metatags.io",
 			"statusCode": 301
 		},
 		{
 			"from": "games.guilherr.me",
-			"to": "game3rb.com",
+			"to": "https://game3rb.com",
 			"statusCode": 301
 		},
 		{
 			"from": "soundcloud.guilherr.me",
-			"to": "soundcloud.com/guilhermebkel",
+			"to": "https://soundcloud.com/guilhermebkel",
 			"statusCode": 301
 		},
 		{
-			"from": "rico.guilherr.me",
-			"to": "rico.html",
-			"statusCode": 200
-		},
-		{
 			"from": "picpay.guilherr.me",
-			"to": "picpay.me/guilhermebkel",
+			"to": "https://picpay.me/guilhermebkel",
 			"statusCode": 301
 		},
 		{
 			"from": "wallpaper.guilherr.me",
-			"to": "unsplash.com",
+			"to": "https://unsplash.com",
 			"statusCode": 301
 		},
 		{
 			"from": "code.guilherr.me",
-			"to": "beautifulcodes.in",
+			"to": "https://beautifulcodes.in",
 			"statusCode": 301
 		},
 		{
 			"from": "trends.guilherr.me",
-			"to": "bloggingfordevs.com/trends",
+			"to": "https://bloggingfordevs.com/trends",
 			"statusCode": 301
 		},
 		{
 			"from": "static.guilherr.me/*",
-			"to": "static/:splat",
+			"to": "/static/:splat",
 			"statusCode": 200
 		},
 		{
 			"from": "ga.guilherr.me",
-			"to": "analytics.google.com/analytics/web/#/report-home/a140879800w201912662p195809126",
+			"to": "https://analytics.google.com/analytics/web/#/report-home/a140879800w201912662p195809126",
 			"statusCode": 301
 		},
 		{
 			"from": "gtm.guilherr.me",
-			"to": "tagmanager.google.com/?authuser=1#/container/accounts/6002534864/containers/35105475/workspaces/3/tags",
+			"to": "https://tagmanager.google.com/?authuser=1#/container/accounts/6002534864/containers/35105475/workspaces/3/tags",
 			"statusCode": 301
 		},
 		{
 			"from": "discord.guilherr.me",
-			"to": "discordapp.com/users/163691892033323008",
+			"to": "https://discordapp.com/users/163691892033323008",
 			"statusCode": 301
 		},
 		{
 			"from": "notion.guilherr.me/:pageId",
-			"to": "notion.so/guilhermebkel/:pageId",
+			"to": "https://notion.so/guilhermebkel/:pageId",
 			"statusCode": 301
 		},
 		{
 			"from": "moodle.guilherr.me",
-			"to": "virtual.ufmg.br/minhasturmas",
+			"to": "https://virtual.ufmg.br/minhasturmas",
 			"statusCode": 301
 		},
 		{
 			"from": "anime.guilherr.me",
-			"to": "myanimelist.net/profile/guilhermebkel",
+			"to": "https://myanimelist.net/profile/guilhermebkel",
 			"statusCode": 301
 		},
 		{
 			"from": "redirects.guilherr.me",
-			"to": "redirects.html",
+			"to": "/redirects.html",
 			"statusCode": 200
 		},
 		{
 			"from": "font.guilherr.me",
-			"to": "patorjk.com/software/taag",
+			"to": "https://patorjk.com/software/taag",
 			"statusCode": 301
 		},
 		{
 			"from": "slug.guilherr.me",
-			"to": "slugify.online",
+			"to": "https://slugify.online",
 			"statusCode": 301
 		},
 		{
 			"from": "scalability.guilherr.me",
-			"to": "awesome-scalability.com",
+			"to": "https://awesome-scalability.com",
 			"statusCode": 301
 		},
 		{
 			"from": "comment.guilherr.me",
-			"to": "gbkel.disqus.com",
+			"to": "https://gbkel.disqus.com",
 			"statusCode": 301
 		},
 		{
 			"from": "review.guilherr.me",
-			"to": "app.refiner.io",
+			"to": "https://app.refiner.io",
 			"statusCode": 301
 		},
 		{
 			"from": "monitoring.guilherr.me",
-			"to": "captain.gce.guilherr.me/net-data-monitor",
+			"to": "chttps://aptain.gce.guilherr.me/net-data-monitor",
 			"statusCode": 301
 		},
 		{
 			"from": "ide.guilherr.me/:organization/:repository",
-			"to": "github1s.com/:organization/:repository",
+			"to": "https://github1s.com/:organization/:repository",
 			"statusCode": 301
 		},
 		{
 			"from": "spotify.guilherr.me",
-			"to": "open.spotify.com/user/12158673084",
+			"to": "https://open.spotify.com/user/12158673084",
 			"statusCode": 301
 		},
 		{
 			"from": "cover.guilherr.me",
-			"to": "getcoverify.com",
+			"to": "https://getcoverify.com",
 			"statusCode": 301
 		}
 	]
