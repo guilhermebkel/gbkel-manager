@@ -194,6 +194,11 @@
 			"from": "cover.guilherr.me",
 			"to": "https://getcoverify.com",
 			"statusCode": 301
+		},
+		{
+			"from": "party.guilherr.me",
+			"to": "https://spotify-party.vercel.app",
+			"statusCode": 301
 		}
 	]
 }
