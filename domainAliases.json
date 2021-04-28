@@ -177,7 +177,7 @@
 		},
 		{
 			"from": "monitoring.guilherr.me",
-			"to": "chttps://aptain.gce.guilherr.me/net-data-monitor",
+			"to": "https://captain.gce.guilherr.me/net-data-monitor",
 			"statusCode": 301
 		},
 		{
