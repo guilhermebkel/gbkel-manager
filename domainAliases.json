@@ -199,11 +199,6 @@
 			"from": "cover.guilherr.me",
 			"to": "getcoverify.com",
 			"statusCode": 301
-		},
-		{
-			"from": "test.guilherr.me",
-			"to": "test.guilherr.me",
-			"statusCode": 301
 		}
 	]
 }
