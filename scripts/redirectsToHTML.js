@@ -37,19 +37,23 @@ const buildRedirectsHTML = (redirects = []) => {
 }
 
 const redirectsToHTML = async () => {
-	const redirectsFilePath = getFilePath("_redirects")
+	try {
+		const redirectsFilePath = getFilePath("_redirects")
 
-	const redirectsFile = await fs.promises.readFile(redirectsFilePath)
+		const redirectsFile = await fs.promises.readFile(redirectsFilePath)
 
-	const redirects = redirectsFile.toString().split("\n\n")
+		const redirects = redirectsFile.toString().split("\n\n")
 
-	const httpsRedirects = redirects.map(redirect => redirect.split("\n")[1])
+		const httpsRedirects = redirects.map(redirect => redirect.split("\n")[1])
 
-	const redirectsHTML = buildRedirectsHTML(httpsRedirects)
+		const redirectsHTML = buildRedirectsHTML(httpsRedirects)
 
-	const redirectsHTMLPath = getFilePath("redirects.html")
+		const redirectsHTMLPath = getFilePath("redirects.html")
 
-	await fs.promises.writeFile(redirectsHTMLPath, redirectsHTML)
+		await fs.promises.writeFile(redirectsHTMLPath, redirectsHTML)
+	} catch (error) {
+		console.log("[redirectsToHTML]: ", error)
+	}
 }
 
 redirectsToHTML()

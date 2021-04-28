@@ -6,7 +6,8 @@
   "scripts": {
     "build:folder-to-html": "node scripts/folderToHTML.js",
     "build:redirects-to-html": "node scripts/redirectsToHTML.js",
-    "build": "npm run build:folder-to-html && npm run build:redirects-to-html"
+    "build:sync-domain-aliases": "node scripts/syncDomainAliases.js",
+    "build": "npm run build:sync-domain-aliases && npm run build:folder-to-html && npm run build:redirects-to-html"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/guilhermebkel/gbkel-redirect/issues"
   },
-  "homepage": "https://github.com/guilhermebkel/gbkel-redirect#readme"
+  "homepage": "https://github.com/guilhermebkel/gbkel-redirect#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "netlify": "^6.1.22"
+  }
 }

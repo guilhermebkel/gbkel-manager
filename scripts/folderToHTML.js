@@ -111,21 +111,25 @@ const buildFolderHTML = (dirItems = dirItems) => {
 }
 
 const folderToHTML = async () => {
-	await searchDirectoryItemsData(staticFolder)
+	try {
+		await searchDirectoryItemsData(staticFolder)
 
-	const folders = dirItems.filter(item => item.type === "folder")
+		const folders = dirItems.filter(item => item.type === "folder")
 
-	await Promise.all(
-		folders.map(async folder => {
-			const folderItems = dirItems.filter(item => item.parent.path === folder.main.path)
+		await Promise.all(
+			folders.map(async folder => {
+				const folderItems = dirItems.filter(item => item.parent.path === folder.main.path)
 
-			const folderHTML = buildFolderHTML(folderItems)
+				const folderHTML = buildFolderHTML(folderItems)
 
-			const folderHTMLPath = path.join(folder.main.path, "/", "index.html")
+				const folderHTMLPath = path.join(folder.main.path, "/", "index.html")
 
-			await fs.promises.writeFile(folderHTMLPath, folderHTML)
-		})
-	)
+				await fs.promises.writeFile(folderHTMLPath, folderHTML)
+			})
+		)
+	} catch (error) {
+		console.log("[folderToHTML]: ", error)
+	}
 }
 
 folderToHTML()
