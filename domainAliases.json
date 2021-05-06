@@ -199,6 +199,11 @@
 			"from": "party.guilherr.me",
 			"to": "https://spotify-party.vercel.app",
 			"statusCode": 301
+		},
+		{
+			"from": "status.guilherr.me",
+			"to": "https://stats.uptimerobot.com/XkKKXcnGxo",
+			"statusCode": 301
 		}
 	]
 }
