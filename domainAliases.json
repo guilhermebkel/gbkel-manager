@@ -204,6 +204,11 @@
 			"from": "status.guilherr.me",
 			"to": "https://stats.uptimerobot.com/XkKKXcnGxo",
 			"statusCode": 301
+		},
+		{
+			"from": "babylon.guilherr.me",
+			"to": "https://sandbox.babylonjs.com",
+			"statusCode": 301
 		}
 	]
 }
