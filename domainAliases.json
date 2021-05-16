@@ -209,6 +209,11 @@
 			"from": "babylon.guilherr.me",
 			"to": "https://sandbox.babylonjs.com",
 			"statusCode": 301
+		},
+		{
+			"from": "delay.guilherr.me/:delayInMilliseconds/:url",
+			"to": "https://deelay.me/:delayInMilliseconds/:url",
+			"statusCode": 200
 		}
 	]
 }
