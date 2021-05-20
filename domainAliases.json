@@ -214,6 +214,11 @@
 			"from": "delay.guilherr.me/:delayInMilliseconds/:url",
 			"to": "https://deelay.me/:delayInMilliseconds/:url",
 			"statusCode": 200
+		},
+		{
+			"from": "usp.guilherr.me",
+			"to": "https://edisciplinas.usp.br/course/index.php",
+			"statusCode": 301
 		}
 	]
 }
