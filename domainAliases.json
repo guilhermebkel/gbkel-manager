@@ -219,6 +219,11 @@
 			"from": "usp.guilherr.me",
 			"to": "https://edisciplinas.usp.br/course/index.php",
 			"statusCode": 301
+		},
+		{
+			"from": "udr.guilherr.me",
+			"to": "https://soundcloud.com/guilhermebkel/sets/udr",
+			"statusCode": 301
 		}
 	]
 }
