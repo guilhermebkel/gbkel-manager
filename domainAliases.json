@@ -224,6 +224,11 @@
 			"from": "udr.guilherr.me",
 			"to": "https://soundcloud.com/guilhermebkel/sets/udr",
 			"statusCode": 301
+		},
+		{
+			"from": "code.guilherr.me",
+			"to": "https://refactoring.guru",
+			"statusCode": 301
 		}
 	]
 }
