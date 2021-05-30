@@ -229,6 +229,11 @@
 			"from": "code.guilherr.me",
 			"to": "https://refactoring.guru",
 			"statusCode": 301
+		},
+		{
+			"from": "graphic.guilherr.me",
+			"to": "https://www.mathsisfun.com/calculus/fourier-series-graph.html",
+			"statusCode": 301
 		}
 	]
 }
