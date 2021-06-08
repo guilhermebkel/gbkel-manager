@@ -234,6 +234,11 @@
 			"from": "graphic.guilherr.me",
 			"to": "https://www.mathsisfun.com/calculus/fourier-series-graph.html",
 			"statusCode": 301
+		},
+		{
+			"from": "downdetector.guilherr.me",
+			"to": "https://downdetector.com",
+			"statusCode": 301
 		}
 	]
 }
