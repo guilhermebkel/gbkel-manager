@@ -239,6 +239,11 @@
 			"from": "downdetector.guilherr.me",
 			"to": "https://downdetector.com",
 			"statusCode": 301
+		},
+		{
+			"from": "gc.guilherr.me",
+			"to": "https://console.cloud.google.com",
+			"statusCode": 301
 		}
 	]
 }
