@@ -244,6 +244,11 @@
 			"from": "gc.guilherr.me",
 			"to": "https://console.cloud.google.com",
 			"statusCode": 301
+		},
+		{
+			"from": "gc1.guilherr.me",
+			"to": "https://console.cloud.google.com",
+			"statusCode": 301
 		}
 	]
 }
