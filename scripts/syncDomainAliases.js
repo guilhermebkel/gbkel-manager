@@ -4,6 +4,7 @@ const fs = require("fs")
 const path = require("path")
 
 const netlify = new Netlify(process.env.NETLIFY_ACCESS_TOKEN)
+const netlifySiteId = process.env.NETLIFY_SITE_ID
 
 const getDomainAliases = async () => {
 	const domainAliasesFilePath = path.join(__dirname, "..", "domainAliases.json")
@@ -16,10 +17,8 @@ const getDomainAliases = async () => {
 }
 
 const syncDomainsOnNetlify = async (domains = []) => {
-	const netlifySiteInfo = await getNetlifySiteInfo()
-
 	await netlify.updateSite({
-		site_id: netlifySiteInfo.siteId,
+		site_id: netlifySiteId,
 		body: {
 			domain_aliases: domains
 		}
@@ -36,29 +35,6 @@ const syncNetlifyRedirectsFile = async (domainAliases) => {
 	const redirectsFilePath = path.join(__dirname, "..", "_redirects")
 
 	await fs.promises.writeFile(redirectsFilePath, redirectsFileContent)
-}
-
-const getNetlifySiteInfo = async () => {
-	const sites = await netlify.listSites()
-
-	const selectedSite = sites.find(({ name }) => name.includes("redirects"))
-
-	if (!selectedSite) {
-		return null
-	}
-
-	return {
-		id: selectedSite.id,
-		siteId: selectedSite.site_id,
-		name: selectedSite.name,
-		zoneId: selectedSite.dns_zone_id,
-		customDomain: selectedSite.custom_domain,
-		defaultDomain: selectedSite.default_domain,
-		domainAliases: [
-			...(selectedSite.domain_aliases || []),
-			selectedSite.custom_domain
-		]
-	}
 }
 
 const serializeDomainAliasesHosts = (domainAliases) => {
