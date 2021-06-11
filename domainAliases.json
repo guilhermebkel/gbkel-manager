@@ -244,6 +244,11 @@
 			"from": "gc.guilherr.me",
 			"to": "https://console.cloud.google.com",
 			"statusCode": 301
+		},
+		{
+			"from": "netflix.guilherr.me",
+			"to": "https://xilften.tv",
+			"statusCode": 301
 		}
 	]
 }
