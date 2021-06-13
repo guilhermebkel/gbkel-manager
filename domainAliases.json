@@ -249,6 +249,11 @@
 			"from": "netflix.guilherr.me",
 			"to": "https://xilften.tv",
 			"statusCode": 301
+		},
+		{
+			"from": "crunchyroll.guilherr.me",
+			"to": "https://animesmania.com",
+			"statusCode": 301
 		}
 	]
 }
