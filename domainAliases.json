@@ -254,6 +254,11 @@
 			"from": "crunchyroll.guilherr.me",
 			"to": "https://animesmania.com",
 			"statusCode": 301
+		},
+		{
+			"from": "photoshop.guilherr.me",
+			"to": "https://www.photopea.com",
+			"statusCode": 301
 		}
 	]
 }
