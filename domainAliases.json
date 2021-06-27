@@ -259,6 +259,11 @@
 			"from": "photoshop.guilherr.me",
 			"to": "https://www.photopea.com",
 			"statusCode": 301
+		},
+		{
+			"from": "steam.guilherr.me",
+			"to": "https://steamcommunity.com/id/Monstrayk",
+			"statusCode": 301
 		}
 	]
 }
