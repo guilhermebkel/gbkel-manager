@@ -264,6 +264,11 @@
 			"from": "steam.guilherr.me",
 			"to": "https://steamcommunity.com/id/Monstrayk",
 			"statusCode": 301
+		},
+		{
+			"from": "books.guilherr.me",
+			"to": "https://goodreads.com/guilhermebkel",
+			"statusCode": 301
 		}
 	]
 }
