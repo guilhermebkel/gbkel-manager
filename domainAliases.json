@@ -32,6 +32,11 @@
 		},
 		{
 			"from": "medium.guilherr.me",
+			"to": "https://medium.com/@guilhermebkel",
+			"statusCode": 301
+		},
+		{
+			"from": "mediumcrawler.guilherr.me",
 			"to": "https://eguadoartigo.iagocavalcante.dev",
 			"statusCode": 301
 		},
