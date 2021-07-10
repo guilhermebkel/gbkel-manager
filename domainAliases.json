@@ -269,6 +269,11 @@
 			"from": "books.guilherr.me",
 			"to": "https://goodreads.com/guilhermebkel",
 			"statusCode": 301
+		},
+		{
+			"from": "netflix.guilherr.me",
+			"to": "https://torrentool.org",
+			"statusCode": 301
 		}
 	]
 }
