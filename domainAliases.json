@@ -274,6 +274,11 @@
 			"from": "netflix.guilherr.me",
 			"to": "https://torrentool.org",
 			"statusCode": 301
+		},
+		{
+			"from": "meet.guilherr.me",
+			"to": "https://meet.new",
+			"statusCode": 301
 		}
 	]
 }
