@@ -7,7 +7,7 @@
 		},
 		{
 			"from": "instance.guilherr.me",
-			"to": "https://captain.gce.guilherr.me",
+			"to": "https://captain.ec2.guilherr.me",
 			"statusCode": 301
 		},
 		{
