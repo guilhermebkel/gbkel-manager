@@ -279,6 +279,11 @@
 			"from": "meet.guilherr.me",
 			"to": "https://meet.new",
 			"statusCode": 301
+		},
+		{
+			"from": "readme.guilherr.me",
+			"to": "https://readme.so/pt/editor",
+			"statusCode": 301
 		}
 	]
 }
