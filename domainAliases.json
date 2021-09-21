@@ -256,6 +256,11 @@
 			"statusCode": 301
 		},
 		{
+			"from": "crunchyroll2.guilherr.me",
+			"to": "https://animesonline.org",
+			"statusCode": 301
+		},
+		{
 			"from": "photoshop.guilherr.me",
 			"to": "https://www.photopea.com",
 			"statusCode": 301
