@@ -199,6 +199,6 @@
 			"from": "correios.guilherr.me/:code",
 			"to": "https://rastreamento.correios.com.br/app/resultado.php?objeto=:code&mqs=S",
 			"statusCode": 301
-		},
+		}
 	]
 }
