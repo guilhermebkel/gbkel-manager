@@ -51,11 +51,6 @@
 			"statusCode": 301
 		},
 		{
-			"from": "mailer.guilherr.me",
-			"to": "https://app.mailerlite.com/dashboard",
-			"statusCode": 301
-		},
-		{
 			"from": "whatsapp.guilherr.me",
 			"to": "https://api.whatsapp.com/send?phone=5527996334936",
 			"statusCode": 301
@@ -81,11 +76,6 @@
 			"statusCode": 301
 		},
 		{
-			"from": "metatags.guilherr.me",
-			"to": "https://metatags.io",
-			"statusCode": 301
-		},
-		{
 			"from": "games.guilherr.me",
 			"to": "https://game3rb.com",
 			"statusCode": 301
@@ -98,21 +88,6 @@
 		{
 			"from": "picpay.guilherr.me",
 			"to": "https://picpay.me/guilhermebkel",
-			"statusCode": 301
-		},
-		{
-			"from": "wallpaper.guilherr.me",
-			"to": "https://unsplash.com",
-			"statusCode": 301
-		},
-		{
-			"from": "code.guilherr.me",
-			"to": "https://beautifulcodes.in",
-			"statusCode": 301
-		},
-		{
-			"from": "trends.guilherr.me",
-			"to": "https://bloggingfordevs.com/trends",
 			"statusCode": 301
 		},
 		{
@@ -141,11 +116,6 @@
 			"statusCode": 301
 		},
 		{
-			"from": "moodle.guilherr.me",
-			"to": "https://virtual.ufmg.br/minhasturmas",
-			"statusCode": 301
-		},
-		{
 			"from": "anime.guilherr.me",
 			"to": "https://myanimelist.net/profile/guilhermebkel",
 			"statusCode": 301
@@ -156,18 +126,8 @@
 			"statusCode": 200
 		},
 		{
-			"from": "font.guilherr.me",
-			"to": "https://patorjk.com/software/taag",
-			"statusCode": 301
-		},
-		{
 			"from": "slug.guilherr.me",
 			"to": "https://slugify.online",
-			"statusCode": 301
-		},
-		{
-			"from": "scalability.guilherr.me",
-			"to": "https://awesome-scalability.com",
 			"statusCode": 301
 		},
 		{
@@ -181,38 +141,13 @@
 			"statusCode": 301
 		},
 		{
-			"from": "monitoring.guilherr.me",
-			"to": "https://captain.gce.guilherr.me/net-data-monitor",
-			"statusCode": 301
-		},
-		{
-			"from": "ide.guilherr.me/:organization/:repository",
-			"to": "https://github1s.com/:organization/:repository",
-			"statusCode": 301
-		},
-		{
 			"from": "spotify.guilherr.me",
 			"to": "https://open.spotify.com/user/12158673084",
 			"statusCode": 301
 		},
 		{
-			"from": "cover.guilherr.me",
-			"to": "https://getcoverify.com",
-			"statusCode": 301
-		},
-		{
-			"from": "party.guilherr.me",
-			"to": "https://spotify-party.vercel.app",
-			"statusCode": 301
-		},
-		{
 			"from": "status.guilherr.me",
 			"to": "https://stats.uptimerobot.com/XkKKXcnGxo",
-			"statusCode": 301
-		},
-		{
-			"from": "babylon.guilherr.me",
-			"to": "https://sandbox.babylonjs.com",
 			"statusCode": 301
 		},
 		{
@@ -236,33 +171,8 @@
 			"statusCode": 301
 		},
 		{
-			"from": "graphic.guilherr.me",
-			"to": "https://www.mathsisfun.com/calculus/fourier-series-graph.html",
-			"statusCode": 301
-		},
-		{
-			"from": "downdetector.guilherr.me",
-			"to": "https://downdetector.com",
-			"statusCode": 301
-		},
-		{
-			"from": "gc.guilherr.me",
-			"to": "https://console.cloud.google.com",
-			"statusCode": 301
-		},
-		{
 			"from": "crunchyroll.guilherr.me",
-			"to": "https://animesmania.com",
-			"statusCode": 301
-		},
-		{
-			"from": "crunchyroll2.guilherr.me",
 			"to": "https://animesonline.org",
-			"statusCode": 301
-		},
-		{
-			"from": "photoshop.guilherr.me",
-			"to": "https://www.photopea.com",
 			"statusCode": 301
 		},
 		{
@@ -281,14 +191,14 @@
 			"statusCode": 301
 		},
 		{
-			"from": "meet.guilherr.me",
-			"to": "https://meet.new",
-			"statusCode": 301
-		},
-		{
 			"from": "readme.guilherr.me",
 			"to": "https://readme.so/pt/editor",
 			"statusCode": 301
-		}
+		},
+		{
+			"from": "correios.guilherr.me/:code",
+			"to": "https://rastreamento.correios.com.br/app/resultado.php?objeto=:code&mqs=S",
+			"statusCode": 301
+		},
 	]
 }
