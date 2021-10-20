@@ -199,6 +199,11 @@
 			"from": "correios.guilherr.me/:code",
 			"to": "https://rastreamento.correios.com.br/app/resultado.php?objeto=:code&mqs=S",
 			"statusCode": 301
+		},
+		{
+			"from": "travel.guilherr.me",
+			"to": "https://www.hurb.com/br",
+			"statusCode": 301
 		}
 	]
 }
