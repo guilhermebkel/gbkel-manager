@@ -204,6 +204,11 @@
 			"from": "travel.guilherr.me",
 			"to": "https://www.hurb.com/br",
 			"statusCode": 301
+		},
+		{
+			"from": "meet.guilherr.me",
+			"to": "https://calendly.com/guilhermebkel/1h-meeting",
+			"statusCode": 301
 		}
 	]
 }
