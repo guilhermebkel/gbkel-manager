@@ -9,10 +9,10 @@ jobs:
     name: Sync kindle contents.
     steps:
       - name: Checkout
-        uses: actions/checkout@v1.1.2
+        uses: actions/checkout@v2
 
       - name: Kindlefy
-        uses: gbkel/kindlefy
+        uses: gbkel/kindlefy@v1.1.2
         with:
           kindle_email: ${{ secrets.KINDLEFY_KINDLE_EMAIL }}
           sender: ${{ secrets.KINDLEFY_SENDER }}
