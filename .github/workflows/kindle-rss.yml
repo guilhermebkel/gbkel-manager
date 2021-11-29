@@ -1,0 +1,19 @@
+on:
+  push:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  kindlefy:
+    runs-on: ubuntu-latest
+    name: Sync kindle contents.
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Kindlefy
+        uses: gbkel/kindlefy@v1
+        with:
+          kindle_email: ${{ secrets.KINDLEFY_KINDLE_EMAIL }}
+          sender: ${{ secrets.KINDLEFY_SENDER }}
+          sources: '[{ "type": "rss", "url": "https://dev.to/feed" }]'
