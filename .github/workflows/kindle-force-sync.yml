@@ -4,7 +4,7 @@ on:
 jobs:
   kindlefy:
     runs-on: ubuntu-latest
-    name: Sync kindle rss.
+    name: Sync kindle resources.
     steps:
       - name: Checkout
         uses: actions/checkout@v2
