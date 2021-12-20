@@ -15,4 +15,4 @@ jobs:
         with:
           kindle_email: ${{ secrets.KINDLEFY_KINDLE_EMAIL }}
           sender: ${{ secrets.KINDLEFY_SENDER }}
-          sources: '[]'
+          sources: '[{ "type": "rss", "url": "https://medium.com/feed/topic/software-engineering" }, { "type": "rss", "url": "https://medium.com/feed/topic/programming" }]'
