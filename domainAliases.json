@@ -214,6 +214,11 @@
 			"from": "kindle.guilherr.me",
 			"to": "https://www.amazon.com.br/gp/digital/fiona/manage?ref_=hp_ss_qs_v3_dv_dc#/home/settings/payment",
 			"statusCode": 301
+		},
+		{
+			"from": "teste.subdomain.guilherr.me",
+			"to": "https://google.com",
+			"statusCode": 301
 		}
 	]
 }
