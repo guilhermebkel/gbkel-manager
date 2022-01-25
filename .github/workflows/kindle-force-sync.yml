@@ -14,4 +14,4 @@ jobs:
         with:
           kindle_email: ${{ secrets.KINDLEFY_KINDLE_EMAIL }}
           sender: ${{ secrets.KINDLEFY_SENDER }}
-          sources: '[{ "type": "manga", "name": "One Piece", "count": 1 }]'
+          sources: '[{ "type": "manga", "name": "Jujutsu Kaisen", "count": 200 }]'
