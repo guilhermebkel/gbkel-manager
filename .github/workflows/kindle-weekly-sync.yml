@@ -16,3 +16,5 @@ jobs:
           kindle_email: ${{ secrets.KINDLEFY_KINDLE_EMAIL }}
           sender: ${{ secrets.KINDLEFY_SENDER }}
           sources: '[{ "type": "manga", "name": "One Piece", "count": 1 },  { "type": "manga", "name": "Jujutsu Kaisen", "count": 1 }, { "type": "rss", "url": "https://aws.amazon.com/pt/blogs/aws/feed" }]'
+          storage: '[{ "type": "local", "githubAccessToken": "${{ secrets.GITHUB_TOKEN }}" }]'
+          no_duplicated_sync: true
