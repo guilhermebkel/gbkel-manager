@@ -14,6 +14,6 @@ jobs:
         with:
           kindle_email: ${{ secrets.KINDLEFY_KINDLE_EMAIL }}
           sender: ${{ secrets.KINDLEFY_SENDER }}
-          sources: '[{ "type": "rss", "url": "https://medium.com/feed/tag/tech" }]'
+          sources: '[{ "type": "rss", "url": "https://medium.com/feed/tag/tech" }, { "type": "rss", "url": "https://medium.com/feed/tag/programming" }]'
           storage: '[{ "type": "local", "githubAccessToken": "${{ secrets.GITHUB_TOKEN }}" }]'
           no_duplicated_sync: true
