@@ -208,5 +208,47 @@
 		"title": "Programming on Medium 3-5-2022",
 		"type": "rss",
 		"createdAt": "2022-03-05T01:12:12.799Z"
+	},
+	"AWS News Blog 3-5-2022": {
+		"filename": "githubworkspacekindlefytmpAWS News Blog 352022.epub.mobi",
+		"title": "AWS News Blog 3-5-2022",
+		"type": "rss",
+		"createdAt": "2022-03-05T02:10:01.986Z"
+	},
+	"Quastor Daily - How Compilers Work": {
+		"filename": "githubworkspacekindlefytmpQuastor Daily  How Compilers Work.epub.mobi",
+		"title": "Quastor Daily - How Compilers Work",
+		"type": "rss",
+		"createdAt": "2022-03-05T02:10:01.986Z"
+	},
+	"Quastor Daily - Observability at Twitter": {
+		"filename": "githubworkspacekindlefytmpQuastor Daily  Observability at Twitter.epub.mobi",
+		"title": "Quastor Daily - Observability at Twitter",
+		"type": "rss",
+		"createdAt": "2022-03-05T02:10:01.986Z"
+	},
+	"Quastor Daily - The Architecture of Databases": {
+		"filename": "githubworkspacekindlefytmpQuastor Daily  The Architecture of Databases.epub.mobi",
+		"title": "Quastor Daily - The Architecture of Databases",
+		"type": "rss",
+		"createdAt": "2022-03-05T02:10:01.986Z"
+	},
+	"Quastor Daily - Building a Search Index with Kafka and Elasticsearch": {
+		"filename": "githubworkspacekindlefytmpQuastor Daily  Building a Search Index with Kafka and Elasticsearch.epub.mobi",
+		"title": "Quastor Daily - Building a Search Index with Kafka and Elasticsearch",
+		"type": "rss",
+		"createdAt": "2022-03-05T02:10:01.986Z"
+	},
+	"Quastor Daily - DoorDash's Migration from Python to Kotlin": {
+		"filename": "githubworkspacekindlefytmpQuastor Daily  DoorDashs Migration from Python to Kotlin.epub.mobi",
+		"title": "Quastor Daily - DoorDash's Migration from Python to Kotlin",
+		"type": "rss",
+		"createdAt": "2022-03-05T02:10:01.986Z"
+	},
+	"Quastor Daily - Implementing Payments in the DoorDash Android App": {
+		"filename": "githubworkspacekindlefytmpQuastor Daily  Implementing Payments in the DoorDash Android App.epub.mobi",
+		"title": "Quastor Daily - Implementing Payments in the DoorDash Android App",
+		"type": "rss",
+		"createdAt": "2022-03-05T02:10:01.986Z"
 	}
 }
