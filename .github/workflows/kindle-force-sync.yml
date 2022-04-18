@@ -16,4 +16,4 @@ jobs:
           sender: ${{ secrets.KINDLEFY_SENDER }}
           sources: '[{ "type": "manga", "name": "Dr Stone", "count": 150 }]'
           storage: '[{ "type": "local", "githubAccessToken": "${{ secrets.GITHUB_TOKEN }}" }]'
-          no_duplicated_sync: true
+          no_duplicated_sync: false
