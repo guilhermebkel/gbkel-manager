@@ -1876,5 +1876,17 @@
 		"title": "Programming on Medium 4-23-2022",
 		"type": "rss",
 		"createdAt": "2022-04-23T01:27:42.310Z"
+	},
+	"AWS News Blog 4-23-2022": {
+		"filename": "AWS-News-Blog-4-23-2022.epub.mobi",
+		"title": "AWS News Blog 4-23-2022",
+		"type": "rss",
+		"createdAt": "2022-04-23T02:41:54.803Z"
+	},
+	"Quastor - Infrastructure as Code at Shopify": {
+		"filename": "Quastor-Infrastructure-as-Code-at-Shopify.epub.mobi",
+		"title": "Quastor - Infrastructure as Code at Shopify",
+		"type": "rss",
+		"createdAt": "2022-04-23T02:41:54.803Z"
 	}
 }
