@@ -1972,5 +1972,23 @@
 		"title": "Programming on Medium 4-30-2022",
 		"type": "rss",
 		"createdAt": "2022-04-30T01:51:42.137Z"
+	},
+	"AWS News Blog 4-30-2022": {
+		"filename": "AWS-News-Blog-4-30-2022.epub.mobi",
+		"title": "AWS News Blog 4-30-2022",
+		"type": "rss",
+		"createdAt": "2022-04-30T02:58:26.620Z"
+	},
+	"Quastor - How Tinder streams video to 70 million users": {
+		"filename": "Quastor-How-Tinder-streams-video-to-70-million-users.epub.mobi",
+		"title": "Quastor - How Tinder streams video to 70 million users",
+		"type": "rss",
+		"createdAt": "2022-04-30T02:58:26.621Z"
+	},
+	"Quastor - How Quora shards their MySQL database": {
+		"filename": "Quastor-How-Quora-shards-their-MySQL-database.epub.mobi",
+		"title": "Quastor - How Quora shards their MySQL database",
+		"type": "rss",
+		"createdAt": "2022-04-30T02:58:26.621Z"
 	}
 }
