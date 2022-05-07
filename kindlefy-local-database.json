@@ -2068,5 +2068,17 @@
 		"title": "Programming on Medium 5-7-2022",
 		"type": "rss",
 		"createdAt": "2022-05-07T01:25:53.387Z"
+	},
+	"AWS News Blog 5-7-2022": {
+		"filename": "AWS-News-Blog-5-7-2022.epub.mobi",
+		"title": "AWS News Blog 5-7-2022",
+		"type": "rss",
+		"createdAt": "2022-05-07T02:40:16.967Z"
+	},
+	"Quastor - Reliability Engineering at BlackRock": {
+		"filename": "Quastor-Reliability-Engineering-at-BlackRock.epub.mobi",
+		"title": "Quastor - Reliability Engineering at BlackRock",
+		"type": "rss",
+		"createdAt": "2022-05-07T02:40:16.967Z"
 	}
 }
