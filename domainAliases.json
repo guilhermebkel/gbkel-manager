@@ -71,6 +71,11 @@
 			"statusCode": 200
 		},
 		{
+			"from": "behance.guilherr.me",
+			"to": "https://www.behance.net/guilhermebkel",
+			"statusCode": 301
+		},
+		{
 			"from": "search.guilherr.me",
 			"to": "https://search.google.com/search-console?resource_id=sc-domain%3Aguilherr.me",
 			"statusCode": 301
