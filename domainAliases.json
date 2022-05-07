@@ -76,6 +76,11 @@
 			"statusCode": 301
 		},
 		{
+			"from": "deviantart.guilherr.me",
+			"to": "https://www.deviantart.com/ehrensk",
+			"statusCode": 301
+		},
+		{
 			"from": "search.guilherr.me",
 			"to": "https://search.google.com/search-console?resource_id=sc-domain%3Aguilherr.me",
 			"statusCode": 301
