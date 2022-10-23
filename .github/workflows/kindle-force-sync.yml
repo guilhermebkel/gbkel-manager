@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Kindlefy
-        uses: gbkel/kindlefy@v1.3.5
+        uses: gbkel/kindlefy@v1.4.3
         with:
           kindle_email: ${{ secrets.KINDLEFY_KINDLE_EMAIL }}
           sender: ${{ secrets.KINDLEFY_SENDER }}
