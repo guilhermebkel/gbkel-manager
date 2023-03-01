@@ -14,6 +14,6 @@ jobs:
         with:
           kindle_email: ${{ secrets.KINDLEFY_KINDLE_EMAIL }}
           sender: ${{ secrets.KINDLEFY_SENDER }}
-          sources: '[{ "type": "manga", "name": "One Piece", "count": 5 }]'
+          sources: '[{ "type": "manga", "name": "Jujutsu Kaisen", "count": 46 }, { "type": "manga", "name": "Chainsaw Man", "count": 84 }, { "type": "manga", "name": "20th Century Boys", "count": 250 }]'
           storage: '[{ "type": "local", "githubAccessToken": "${{ secrets.GITHUB_TOKEN }}" }]'
           no_duplicated_sync: false
