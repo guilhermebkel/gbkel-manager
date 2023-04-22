@@ -2293,5 +2293,11 @@
 		"title": "AWS News Blog 4-15-2023",
 		"contentType": "application/epub+zip",
 		"createdAt": "2023-04-15T02:08:06.126Z"
+	},
+	"AWS News Blog 4-22-2023": {
+		"filename": "AWS-News-Blog-4-22-2023.epub",
+		"title": "AWS News Blog 4-22-2023",
+		"contentType": "application/epub+zip",
+		"createdAt": "2023-04-22T02:09:24.439Z"
 	}
 }
