@@ -1,11 +1,6 @@
 {
 	"domainAliases": [
 		{
-			"from": "cv.guilherr.me",
-			"to": "https://sourcerer.io/guilhermebkel",
-			"statusCode": 301
-		},
-		{
 			"from": "instance.guilherr.me",
 			"to": "https://captain.ec2.guilherr.me",
 			"statusCode": 301
@@ -13,11 +8,6 @@
 		{
 			"from": "linkedin.guilherr.me",
 			"to": "https://linkedin.com/in/guilhermebkel",
-			"statusCode": 301
-		},
-		{
-			"from": "talk.guilherr.me",
-			"to": "https://whereby.com/guilhermemota",
 			"statusCode": 301
 		},
 		{
@@ -36,11 +26,6 @@
 			"statusCode": 301
 		},
 		{
-			"from": "mediumcrawler.guilherr.me",
-			"to": "https://eguadoartigo.iagocavalcante.dev",
-			"statusCode": 301
-		},
-		{
 			"from": "seo.guilherr.me/:url/:device",
 			"to": "https://googlechrome.github.io/lighthouse/viewer/?psiurl=https%3A%2F%2F:url&strategy=:device&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext",
 			"statusCode": 301
@@ -52,7 +37,7 @@
 		},
 		{
 			"from": "whatsapp.guilherr.me",
-			"to": "https://api.whatsapp.com/send?phone=5527996334936",
+			"to": "https://mail.guilherr.me",
 			"statusCode": 301
 		},
 		{
@@ -83,11 +68,6 @@
 		{
 			"from": "search.guilherr.me",
 			"to": "https://search.google.com/search-console?resource_id=sc-domain%3Aguilherr.me",
-			"statusCode": 301
-		},
-		{
-			"from": "games.guilherr.me",
-			"to": "https://game3rb.com",
 			"statusCode": 301
 		},
 		{
@@ -166,26 +146,6 @@
 			"statusCode": 200
 		},
 		{
-			"from": "usp.guilherr.me",
-			"to": "https://edisciplinas.usp.br/course/index.php",
-			"statusCode": 301
-		},
-		{
-			"from": "udr.guilherr.me",
-			"to": "https://soundcloud.com/guilhermebkel/sets/udr",
-			"statusCode": 301
-		},
-		{
-			"from": "code.guilherr.me",
-			"to": "https://refactoring.guru",
-			"statusCode": 301
-		},
-		{
-			"from": "crunchyroll.guilherr.me",
-			"to": "https://meusanimes.net",
-			"statusCode": 301
-		},
-		{
 			"from": "steam.guilherr.me",
 			"to": "https://steamcommunity.com/id/Monstrayk",
 			"statusCode": 301
@@ -193,11 +153,6 @@
 		{
 			"from": "books.guilherr.me",
 			"to": "https://goodreads.com/guilhermebkel",
-			"statusCode": 301
-		},
-		{
-			"from": "netflix.guilherr.me",
-			"to": "https://torrentool.org",
 			"statusCode": 301
 		},
 		{
@@ -211,13 +166,8 @@
 			"statusCode": 301
 		},
 		{
-			"from": "travel.guilherr.me",
-			"to": "https://www.hurb.com/br",
-			"statusCode": 301
-		},
-		{
 			"from": "meet.guilherr.me",
-			"to": "https://calendly.com/guilhermebkel/1h-meeting",
+			"to": "https://calendly.com/guilhermebkel",
 			"statusCode": 301
 		},
 		{
@@ -232,7 +182,7 @@
 		},
 		{
 			"from": "query.guilherr.me",
-			"to": "https://explain.depesz.com",
+			"to": "https://explain.dalibo.com",
 			"statusCode": 301
 		}
 	]
