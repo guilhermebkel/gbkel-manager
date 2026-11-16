@@ -40,6 +40,7 @@ export function matchAlias(aliases, hostname, pathname) {
         return {
           to: entry.to,
           statusCode: entry.statusCode,
+          entry,
         };
       }
       continue;
@@ -56,6 +57,7 @@ export function matchAlias(aliases, hostname, pathname) {
         return {
           to,
           statusCode: entry.statusCode,
+          entry,
         };
       } else {
         const prefixWithoutSlash = prefix.slice(0, -1);
@@ -65,6 +67,7 @@ export function matchAlias(aliases, hostname, pathname) {
           return {
             to,
             statusCode: entry.statusCode,
+            entry,
           };
         }
       }
@@ -105,6 +108,7 @@ export function matchAlias(aliases, hostname, pathname) {
       return {
         to,
         statusCode: entry.statusCode,
+        entry,
       };
     }
   }

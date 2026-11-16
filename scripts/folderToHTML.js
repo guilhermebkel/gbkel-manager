@@ -12,11 +12,16 @@ const searchDirectoryItemsData = async (directory, staticFolder, dirItems) => {
       const filePath = path.join(directory, file.name);
       const isDirectory = file.isDirectory();
 
+      let relPath = filePath.replace(staticFolder, '') || '/';
+      if (isDirectory && !relPath.endsWith('/')) {
+        relPath += '/';
+      }
+
       const itemData = {
         main: {
           name: getItemName(filePath),
           path: filePath,
-          relativePath: filePath.replace(staticFolder, '') || '/',
+          relativePath: relPath,
         },
         parent: {
           name: getItemName(directory),
@@ -54,10 +59,14 @@ const buildFolderHTML = (dirItems) => {
 				${dirItems
           .map((item) => {
             const isFolder = item.type === 'folder';
+            const href =
+              isFolder && !item.main.relativePath.endsWith('/')
+                ? item.main.relativePath + '/'
+                : item.main.relativePath;
 
             return `
 							<a
-								href="${item.main.relativePath}"
+								href="${href}"
 								target="${isFolder ? '_self' : '_blank'}"
 							>
 								${

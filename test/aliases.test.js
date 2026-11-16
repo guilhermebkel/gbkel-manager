@@ -19,10 +19,9 @@ test('aliasHosts returns sorted unique hosts from aliases', () => {
 
 test('matchAlias: linkedin (301 host-only)', () => {
   const match = matchAlias(domainAliasesData, 'linkedin.guilherr.me', '/');
-  assert.deepEqual(match, {
-    to: 'https://linkedin.com/in/guilhermebkel',
-    statusCode: 301,
-  });
+  assert.equal(match.to, 'https://linkedin.com/in/guilhermebkel');
+  assert.equal(match.statusCode, 301);
+  assert.equal(match.entry?.from, 'linkedin.guilherr.me');
 });
 
 test('matchAlias: linkedin with path /x returns null', () => {
@@ -35,10 +34,12 @@ test('matchAlias: linkedin with path /x returns null', () => {
 
 test('matchAlias: seo /:url/:device substitution', () => {
   const match = matchAlias(domainAliasesData, 'seo.guilherr.me', '/example.com/mobile');
-  assert.deepEqual(match, {
-    to: 'https://googlechrome.github.io/lighthouse/viewer/?psiurl=https%3A%2F%2Fexample.com&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext',
-    statusCode: 301,
-  });
+  assert.equal(
+    match.to,
+    'https://googlechrome.github.io/lighthouse/viewer/?psiurl=https%3A%2F%2Fexample.com&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext'
+  );
+  assert.equal(match.statusCode, 301);
+  assert.equal(match.entry?.from, 'seo.guilherr.me/:url/:device');
 
   // Also verify trailing slash ignored on segments
   const matchTrailing = matchAlias(domainAliasesData, 'seo.guilherr.me', '/example.com/mobile/');
@@ -47,74 +48,68 @@ test('matchAlias: seo /:url/:device substitution', () => {
 
 test('matchAlias: notion /:pageId substitution', () => {
   const match = matchAlias(domainAliasesData, 'notion.guilherr.me', '/abc123xyz');
-  assert.deepEqual(match, {
-    to: 'https://notion.so/guilhermebkel/abc123xyz',
-    statusCode: 301,
-  });
+  assert.equal(match.to, 'https://notion.so/guilhermebkel/abc123xyz');
+  assert.equal(match.statusCode, 301);
+  assert.equal(match.entry?.from, 'notion.guilherr.me/:pageId');
 });
 
 test('matchAlias: correios /:code substitution', () => {
   const match = matchAlias(domainAliasesData, 'correios.guilherr.me', '/AA123456789BR');
-  assert.deepEqual(match, {
-    to: 'https://rastreamento.correios.com.br/app/resultado.php?objeto=AA123456789BR&mqs=S',
-    statusCode: 301,
-  });
+  assert.equal(
+    match.to,
+    'https://rastreamento.correios.com.br/app/resultado.php?objeto=AA123456789BR&mqs=S'
+  );
+  assert.equal(match.statusCode, 301);
+  assert.equal(match.entry?.from, 'correios.guilherr.me/:code');
 });
 
 test('matchAlias: delay /:delayInMilliseconds/:url proxy', () => {
   const match = matchAlias(domainAliasesData, 'delay.guilherr.me', '/1000/example.com');
-  assert.deepEqual(match, {
-    to: 'https://deelay.me/1000/example.com',
-    statusCode: 200,
-  });
+  assert.equal(match.to, 'https://deelay.me/1000/example.com');
+  assert.equal(match.statusCode, 200);
+  assert.equal(match.entry?.from, 'delay.guilherr.me/:delayInMilliseconds/:url');
 });
 
 test('matchAlias: blog / (proxy to https://guilherr.me/blog)', () => {
   const match = matchAlias(domainAliasesData, 'blog.guilherr.me', '/');
-  assert.deepEqual(match, {
-    to: 'https://guilherr.me/blog',
-    statusCode: 200,
-  });
+  assert.equal(match.to, 'https://guilherr.me/blog');
+  assert.equal(match.statusCode, 200);
+  assert.equal(match.entry?.from, 'blog.guilherr.me');
 });
 
 test('matchAlias: blog /foo/bar (proxy to https://guilherr.me/foo/bar)', () => {
   const match = matchAlias(domainAliasesData, 'blog.guilherr.me', '/foo/bar');
-  assert.deepEqual(match, {
-    to: 'https://guilherr.me/foo/bar',
-    statusCode: 200,
-  });
+  assert.equal(match.to, 'https://guilherr.me/foo/bar');
+  assert.equal(match.statusCode, 200);
+  assert.equal(match.entry?.from, 'blog.guilherr.me/*');
 });
 
 test('matchAlias: static /js/default.js → asset /static/js/default.js', () => {
   const match = matchAlias(domainAliasesData, 'static.guilherr.me', '/js/default.js');
-  assert.deepEqual(match, {
-    to: '/static/js/default.js',
-    statusCode: 200,
-  });
+  assert.equal(match.to, '/static/js/default.js');
+  assert.equal(match.statusCode, 200);
+  assert.equal(match.entry?.from, 'static.guilherr.me/*');
 });
 
 test('matchAlias: static / → asset /static/', () => {
   const match = matchAlias(domainAliasesData, 'static.guilherr.me', '/');
-  assert.deepEqual(match, {
-    to: '/static/',
-    statusCode: 200,
-  });
+  assert.equal(match.to, '/static/');
+  assert.equal(match.statusCode, 200);
+  assert.equal(match.entry?.from, 'static.guilherr.me/*');
 });
 
 test('matchAlias: mail → /pages/mail.html', () => {
   const match = matchAlias(domainAliasesData, 'mail.guilherr.me', '/');
-  assert.deepEqual(match, {
-    to: '/pages/mail.html',
-    statusCode: 200,
-  });
+  assert.equal(match.to, '/pages/mail.html');
+  assert.equal(match.statusCode, 200);
+  assert.equal(match.entry?.from, 'mail.guilherr.me');
 });
 
 test('matchAlias: redirects → /redirects.html', () => {
   const match = matchAlias(domainAliasesData, 'redirects.guilherr.me', '/');
-  assert.deepEqual(match, {
-    to: '/redirects.html',
-    statusCode: 200,
-  });
+  assert.equal(match.to, '/redirects.html');
+  assert.equal(match.statusCode, 200);
+  assert.equal(match.entry?.from, 'redirects.guilherr.me');
 });
 
 test('matchAlias: unknown host returns null', () => {

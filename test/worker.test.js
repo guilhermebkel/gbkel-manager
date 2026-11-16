@@ -141,6 +141,53 @@ test('worker: mail → /pages/mail.html', async (t) => {
   assert.equal(await res.text(), '<html>mail</html>');
 });
 
+test('worker: asset directory 307 with absolute Location is rewritten to public path', async () => {
+  const assetFetchMock = async (req) => {
+    return new Response(null, {
+      status: 307,
+      headers: { Location: 'http://static.guilherr.me/static/js/' },
+    });
+  };
+
+  const req = new Request('https://static.guilherr.me/js');
+  const res = await worker.fetch(req, { ASSETS: { fetch: assetFetchMock } });
+
+  assert.equal(res.status, 307);
+  assert.equal(res.headers.get('Location'), 'https://static.guilherr.me/js/');
+});
+
+test('worker: asset directory 307 with relative Location is rewritten to public path', async () => {
+  const assetFetchMock = async (req) => {
+    return new Response(null, {
+      status: 307,
+      headers: { Location: '/static/js/' },
+    });
+  };
+
+  const req = new Request('https://static.guilherr.me/js');
+  const res = await worker.fetch(req, { ASSETS: { fetch: assetFetchMock } });
+
+  assert.equal(res.status, 307);
+  assert.equal(res.headers.get('Location'), 'https://static.guilherr.me/js/');
+});
+
+test('worker: non-redirect asset response passes through unchanged', async () => {
+  const assetFetchMock = async (req) => {
+    return new Response('unchanged asset body', {
+      status: 200,
+      headers: { 'content-type': 'text/plain', 'custom-header': 'value123' },
+    });
+  };
+
+  const req = new Request('https://static.guilherr.me/js/default.js');
+  const res = await worker.fetch(req, { ASSETS: { fetch: assetFetchMock } });
+
+  assert.equal(res.status, 200);
+  assert.equal(await res.text(), 'unchanged asset body');
+  assert.equal(res.headers.get('content-type'), 'text/plain');
+  assert.equal(res.headers.get('custom-header'), 'value123');
+});
+
 test('every host from domainAliases.json appears exactly once as a custom domain in wrangler.jsonc and vice versa', (t) => {
   const wranglerPath = path.join(import.meta.dirname, '..', 'wrangler.jsonc');
   if (!fs.existsSync(wranglerPath)) {
