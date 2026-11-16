@@ -1,0 +1,158 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gbkel-manager",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "anime.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "behance.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "blog.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "books.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "cms.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "comment.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "correios.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "delay.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "deviantart.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "discord.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "emoji.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "ga.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "gist.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "gtm.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "instance.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "json.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "kindle.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "linkedin.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "mail.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "medium.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "meet.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "notion.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "picpay.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "query.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "readme.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "redirects.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "review.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "search.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "seo.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "slug.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "soundcloud.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "spotify.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "static.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "status.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "steam.guilherr.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "whatsapp.guilherr.me",
+      "custom_domain": true
+    }
+  ]
+}

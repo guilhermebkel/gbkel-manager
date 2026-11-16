@@ -1,103 +1,83 @@
-const fs = require("fs")
-const path = require("path")
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
-const STATIC_FOLDER_NAME = "static"
+const getItemName = (p) => p.split('/').pop();
 
-const staticFolder = path.join(__dirname, "..", STATIC_FOLDER_NAME)
+const searchDirectoryItemsData = async (directory, staticFolder, dirItems) => {
+  try {
+    const files = await fs.readdir(directory, { withFileTypes: true });
 
-const dirItems = [
-	{
-    type: "folder",
-    main: {
-			name: "static",
-      path: staticFolder,
-      relativePath: "/"
-    },
-    parent: {
-			name: "",
-			path: "",
-			relativePath: ""
-		}
+    for (const file of files) {
+      if (file.name === 'index.html') continue;
+      const filePath = path.join(directory, file.name);
+      const isDirectory = file.isDirectory();
+
+      let relPath = filePath.replace(staticFolder, '') || '/';
+      if (isDirectory && !relPath.endsWith('/')) {
+        relPath += '/';
+      }
+
+      const itemData = {
+        main: {
+          name: getItemName(filePath),
+          path: filePath,
+          relativePath: relPath,
+        },
+        parent: {
+          name: getItemName(directory),
+          path: directory,
+          relativePath: directory.replace(staticFolder, '') || '/',
+        },
+      };
+
+      if (isDirectory) {
+        dirItems.push({
+          type: 'folder',
+          ...itemData,
+        });
+        await searchDirectoryItemsData(filePath, staticFolder, dirItems);
+      } else {
+        dirItems.push({
+          type: 'file',
+          ...itemData,
+        });
+      }
+    }
+  } catch (error) {
+    console.error('[folderToHTML search]:', error.message);
   }
-]
+};
 
-const getItemName = (path) => {
-	return path.split("/").pop()
-}
-
-const getRelativePath = (path) => {
-	return path.replace(staticFolder, "")
-}
-
-const searchDirectoryItemsData = async (directory) => {
-	try {
-		const files = await fs.promises.readdir(directory, { withFileTypes: true })
-
-		await Promise.all(
-			files.map(async file => {
-				const isDirectory = file.isDirectory()
-
-				const filePath = path.join(directory, file.name)
-
-				const itemData = {
-					main: {
-						name: getItemName(filePath),
-						path: filePath,
-						relativePath: getRelativePath(filePath)
-					},
-					parent: {
-						name: getItemName(directory),
-						path: directory,
-						relativePath: getRelativePath(directory)
-					}
-				}
-
-				if (isDirectory) {
-					dirItems.push({
-						type: "folder",
-						...itemData
-					})
-
-					return await searchDirectoryItemsData(filePath)
-				} else {
-					dirItems.push({
-						type: "file",
-						...itemData
-					})
-				}
-			})
-		)
-	} catch (error) {
-		console.log(error.message)
-	}
-}
-
-const buildFolderHTML = (dirItems = dirItems) => {
-	const folderHTML = `
+const buildFolderHTML = (dirItems) => {
+  const folderHTML = `
 		<!DOCTYPE html> 
 		<html>
 			<head>
 				<script src="https://static.guilherr.me/js/default.js"></script>
 			</head>
 			<body>
-				${dirItems.map(item => {
-					const isFolder = item.type === "folder"
+				${dirItems
+          .map((item) => {
+            const isFolder = item.type === 'folder';
+            const href =
+              isFolder && !item.main.relativePath.endsWith('/')
+                ? item.main.relativePath + '/'
+                : item.main.relativePath;
 
-					return (
-						`
+            return `
 							<a
-								href="${item.main.relativePath}"
-								target="${isFolder ? "_self" : "_blank"}"
+								href="${href}"
+								target="${isFolder ? '_self' : '_blank'}"
 							>
-								${isFolder ? (
-									`<br>/${item.main.name}</br>`
-								) : (
-									item.main.name
-								)}
+								${
+                  isFolder
+                    ? `<br>/${item.main.name}</br>`
+                    : item.main.name
+                }
 							</a>
-						`
-					)
-				}).join("<br></br>")}
+						`;
+          })
+          .join('<br></br>')}
 
 				<script>
 					renderDefaultHead({ pageName: "Static" })
@@ -105,31 +85,53 @@ const buildFolderHTML = (dirItems = dirItems) => {
 				</script>
 			</body> 
 		</html> 
-	`
+	`;
 
-	return folderHTML
+  return folderHTML;
+};
+
+export async function folderToHTML(targetFolder) {
+  const root = path.join(import.meta.dirname, '..');
+  const staticSrc = path.join(root, 'static');
+  const staticFolder = targetFolder || path.join(root, 'dist', 'static');
+
+  try {
+    await fs.access(staticFolder);
+  } catch {
+    await fs.mkdir(path.dirname(staticFolder), { recursive: true });
+    await fs.cp(staticSrc, staticFolder, { recursive: true });
+  }
+
+  const dirItems = [
+    {
+      type: 'folder',
+      main: {
+        name: 'static',
+        path: staticFolder,
+        relativePath: '/',
+      },
+      parent: {
+        name: '',
+        path: '',
+        relativePath: '',
+      },
+    },
+  ];
+
+  await searchDirectoryItemsData(staticFolder, staticFolder, dirItems);
+
+  const folders = dirItems.filter((item) => item.type === 'folder');
+
+  for (const folder of folders) {
+    const folderItems = dirItems.filter(
+      (item) => item.parent.path === folder.main.path
+    );
+    const folderHTML = buildFolderHTML(folderItems);
+    const folderHTMLPath = path.join(folder.main.path, 'index.html');
+    await fs.writeFile(folderHTMLPath, folderHTML);
+  }
 }
 
-const folderToHTML = async () => {
-	try {
-		await searchDirectoryItemsData(staticFolder)
-
-		const folders = dirItems.filter(item => item.type === "folder")
-
-		await Promise.all(
-			folders.map(async folder => {
-				const folderItems = dirItems.filter(item => item.parent.path === folder.main.path)
-
-				const folderHTML = buildFolderHTML(folderItems)
-
-				const folderHTMLPath = path.join(folder.main.path, "/", "index.html")
-
-				await fs.promises.writeFile(folderHTMLPath, folderHTML)
-			})
-		)
-	} catch (error) {
-		console.log("[folderToHTML]: ", error)
-	}
+if (process.argv[1] && import.meta.url.endsWith(path.basename(process.argv[1]))) {
+  await folderToHTML();
 }
-
-folderToHTML()

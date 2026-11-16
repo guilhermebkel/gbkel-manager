@@ -2,26 +2,25 @@
   "name": "gbkel-manager",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "main": "src/worker.js",
   "scripts": {
     "build:folder-to-html": "node scripts/folderToHTML.js",
     "build:redirects-to-html": "node scripts/redirectsToHTML.js",
-    "build:sync-domain-aliases": "node scripts/syncDomainAliases.js",
-    "build": "npm run build:sync-domain-aliases && npm run build:folder-to-html && npm run build:redirects-to-html"
+    "build": "node scripts/build.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guilhermebkel/gbkel-redirect.git"
+    "url": "git+https://github.com/guilhermebkel/gbkel-manager.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/guilhermebkel/gbkel-redirect/issues"
+    "url": "https://github.com/guilhermebkel/gbkel-manager/issues"
   },
-  "homepage": "https://github.com/guilhermebkel/gbkel-redirect#readme",
-  "dependencies": {
-    "dotenv": "^8.2.0",
-    "netlify": "^6.1.22"
+  "homepage": "https://github.com/guilhermebkel/gbkel-manager#readme",
+  "devDependencies": {
+    "wrangler": "^4.0.0"
   }
 }
