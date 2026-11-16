@@ -2,8 +2,10 @@
   "name": "gbkel-manager",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
+    "test": "node --test",
     "build:folder-to-html": "node scripts/folderToHTML.js",
     "build:redirects-to-html": "node scripts/redirectsToHTML.js",
     "build:sync-domain-aliases": "node scripts/syncDomainAliases.js",
