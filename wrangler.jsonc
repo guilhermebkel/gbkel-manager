@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "gbkel-redirects",
+  "name": "gbkel-manager",
   "main": "src/worker.js",
   "compatibility_date": "2026-11-01",
   "assets": {

@@ -17,5 +17,5 @@ The static files can be reached at static.guilherr.me and the list of domain ali
 ## 🚀 First-time setup on Cloudflare
 
 1. In the `guilherr.me` DNS zone, delete the existing CNAME records that point to `redirects.guilherr.me` / `gbkel-redirects.netlify.app` for every host in `domainAliases.json` (custom domains can't be attached while a record exists for the same name).
-2. Workers & Pages → Create → Import a repository → `guilhermebkel/gbkel-redirects`, build command `npm run build`, deploy command `npx wrangler deploy`, production branch `main`.
+2. Workers & Pages → Create → Import a repository → `guilhermebkel/gbkel-manager`, build command `npm run build`, deploy command `npx wrangler deploy`, production branch `main`.
 3. The first deploy creates the custom domains and their DNS records and certificates.
