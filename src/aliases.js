@@ -47,7 +47,7 @@ export function matchAlias(aliases, hostname, pathname) {
 
     const patternPath = entry.from.slice(slashIdx);
 
-    if (patternPath.endsWith('/' + '*')) {
+    if (patternPath.endsWith('/*')) {
       const prefix = patternPath.slice(0, -1);
       if (prefix === '/') {
         const splat = reqPath.slice(1);
