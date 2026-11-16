@@ -5,7 +5,6 @@
   "type": "module",
   "main": "src/worker.js",
   "scripts": {
-    "test": "node --test",
     "build:folder-to-html": "node scripts/folderToHTML.js",
     "build:redirects-to-html": "node scripts/redirectsToHTML.js",
     "build": "node scripts/build.js"

@@ -13,14 +13,11 @@ export async function build() {
   await fs.rm(dist, { recursive: true, force: true });
   await fs.mkdir(dist, { recursive: true });
 
-  // Copy static/ to dist/static/ and pages/ to dist/pages/ using Node built-in fs.cp
   await fs.cp(staticSrc, staticDist, { recursive: true });
   await fs.cp(pagesSrc, path.join(dist, 'pages'), { recursive: true });
 
-  // Generate folder index HTML in dist/static/**
   await folderToHTML(staticDist);
 
-  // Generate dist/redirects.html
   await redirectsToHTML(dist);
 }
 

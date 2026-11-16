@@ -34,7 +34,6 @@ export function matchAlias(aliases, hostname, pathname) {
 
     if (entryHost !== reqHost) continue;
 
-    // Host-only alias: matches '/' only
     if (slashIdx === -1) {
       if (reqPath === '/') {
         return {
@@ -48,8 +47,7 @@ export function matchAlias(aliases, hostname, pathname) {
 
     const patternPath = entry.from.slice(slashIdx);
 
-    // Trailing wildcard pattern (e.g. /* or /prefix/*)
-    if (patternPath.endsWith('/*')) {
+    if (patternPath.endsWith('/' + '*')) {
       const prefix = patternPath.slice(0, -1);
       if (prefix === '/') {
         const splat = reqPath.slice(1);
@@ -74,8 +72,6 @@ export function matchAlias(aliases, hostname, pathname) {
       continue;
     }
 
-    // Segment matching (e.g. /:url/:device, /:pageId, /:code)
-    // Ignore trailing slash differences except for '/' itself
     const normReq = reqPath.length > 1 && reqPath.endsWith('/') ? reqPath.slice(0, -1) : reqPath;
     const normPat = patternPath.length > 1 && patternPath.endsWith('/') ? patternPath.slice(0, -1) : patternPath;
 

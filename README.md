@@ -10,7 +10,7 @@
 
 This repository centralizes my domain aliases and static files (such as scripts, stylesheets, etc).
 
-Domain aliases live in `domainAliases.json` and are served by a Cloudflare Worker. Adding an alias requires adding the entry to `domainAliases.json` and adding the custom domain route in `wrangler.jsonc` (enforced by automated tests). Deployment is automatic via Cloudflare Workers Builds (Git integration).
+Domain aliases live in `domainAliases.json` and are served by a Cloudflare Worker. Adding an alias requires adding the entry to `domainAliases.json` and adding the custom domain route in `wrangler.jsonc` (both files must be updated together). Deployment is automatic via Cloudflare Workers Builds (Git integration).
 
 The static files can be reached at static.guilherr.me and the list of domain aliases can be found at redirects.guilherr.me.
 
