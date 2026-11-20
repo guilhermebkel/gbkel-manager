@@ -1,9 +1,12 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import domainAliasesData from '../domainAliases.json' with { type: 'json' };
+const fs = require("fs")
+const path = require("path")
+
+const getFilePath = (fileName) => {
+	return path.join(__dirname, "..", fileName)
+}
 
 const buildRedirectsHTML = (redirects = []) => {
-  const folderHTML = `
+	const folderHTML = `
 		<!DOCTYPE html> 
 		<html>
 			<head>
@@ -15,39 +18,42 @@ const buildRedirectsHTML = (redirects = []) => {
 				<script src="https://static.guilherr.me/js/default.js"></script>
 			</head>
 			<body>
-				${redirects
-          .map(
-            (redirect) => `
+				${redirects.map(redirect => (
+					`
 					<p>
 						${redirect}
 					</p>
 					`
-          )
-          .join('')}
+				)).join("")}
 			</body>
 			<script>
 				renderDefaultHead({ pageName: "Redirects" })
 				renderDefaultBackground({ selector: "body" })
 			</script>
 		</html>
-	`;
+	`
 
-  return folderHTML;
-};
-
-export async function redirectsToHTML(distDir) {
-  const targetDist = distDir || path.join(import.meta.dirname, '..', 'dist');
-  await fs.mkdir(targetDist, { recursive: true });
-
-  const lines = domainAliasesData.domainAliases.map(
-    ({ from, to, statusCode }) => `https://${from} → ${to} ${statusCode}`
-  );
-
-  const html = buildRedirectsHTML(lines);
-  const outPath = path.join(targetDist, 'redirects.html');
-  await fs.writeFile(outPath, html);
+	return folderHTML
 }
 
-if (process.argv[1] && import.meta.url.endsWith(path.basename(process.argv[1]))) {
-  await redirectsToHTML();
+const redirectsToHTML = async () => {
+	try {
+		const redirectsFilePath = getFilePath("_redirects")
+
+		const redirectsFile = await fs.promises.readFile(redirectsFilePath)
+
+		const redirects = redirectsFile.toString().split("\n\n")
+
+		const httpsRedirects = redirects.map(redirect => redirect.split("\n")[1])
+
+		const redirectsHTML = buildRedirectsHTML(httpsRedirects)
+
+		const redirectsHTMLPath = getFilePath("redirects.html")
+
+		await fs.promises.writeFile(redirectsHTMLPath, redirectsHTML)
+	} catch (error) {
+		console.log("[redirectsToHTML]: ", error)
+	}
 }
+
+redirectsToHTML()
