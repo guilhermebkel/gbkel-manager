@@ -4,7 +4,7 @@ Status: accepted (2026-11-20)
 
 ## Context
 
-An agent can only change code safely when lint, types, tests and docs reject a wrong change quickly. This repository had none of that: a few CommonJS scripts, no tests and no CI besides the Kindle workflows. zerod already has such a harness, itself ported from tocomevidencia.
+An agent can only change code safely when lint, types, tests and docs reject a wrong change quickly. This repository had none of that: a few CommonJS scripts, no tests. zerod already has such a harness, itself ported from tocomevidencia.
 
 ## Decision
 

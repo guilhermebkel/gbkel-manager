@@ -58,4 +58,3 @@ Every file in a mapped folder ends its name with the folder's name, singular (`N
 - `process.env` is read only in `src/Setup/EnvSetup.ts`. Secrets (Netlify and CapRover tokens and passwords) are never logged or committed; `.env` is ignored.
 - Code that keeps an old stored shape or an old script working carries a comment with `@legacy`. Nothing else gets backward compatibility. Remove it when the old data is gone.
 - When behavior or vocabulary changes, update `GLOSSARY.md`, the docs or an ADR in the same PR.
-- The Kindle workflows under `.github/workflows/kindle-*.yml` and `kindlefy-local-database.json` are not part of this harness: leave them alone.
