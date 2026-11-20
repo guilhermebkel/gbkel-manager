@@ -12,4 +12,4 @@ Port its structure (`AGENTS.md` as an index, standards docs, Oxlint plus a minim
 
 ## Consequences
 
-The rules and scripts are a copy that can drift from the original. A fix found here is worth carrying back to zerod. `static/` (served browser assets, one of them a vendor snippet) and `scripts/legacy/` (to be replaced by the adapters) are outside lint; the first is not source code of this project and the second goes away with the migration.
+The rules and scripts are a copy that can drift from the original. A fix found here is worth carrying back to zerod. `static/` (served browser assets, one of them a vendor snippet) is outside lint: it is published as it is and is not source code of this project.

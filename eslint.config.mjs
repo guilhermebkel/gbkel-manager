@@ -7,7 +7,7 @@ const BOOLEAN_PREFIXES = ["is", "has", "should", "can", "must", "was", "did"];
 const TEST_FILES = ["src/**/*.test.ts", "scripts/**/*.test.mjs", "*.test.mjs", "tooling/*.test.mjs"];
 
 export default tseslint.config(
-  { ignores: ["**/dist/", "node_modules/", "coverage/", "scripts/legacy/", "static/"] },
+  { ignores: ["**/dist/", "node_modules/", "coverage/", "static/"] },
   {
     files: ["**/*.{ts,mjs,js}"],
     plugins: { "@typescript-eslint": tseslint.plugin },

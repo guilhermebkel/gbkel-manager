@@ -9,3 +9,4 @@ coverage/
 lint-fixtures-*/
 _redirects
 redirects.html
+static/**/index.html

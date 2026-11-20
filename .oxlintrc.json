@@ -23,7 +23,6 @@
     "node_modules/",
     "coverage/",
     "lint-fixtures-*/",
-    "scripts/legacy/",
     "static/"
   ],
   "rules": {

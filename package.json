@@ -12,9 +12,7 @@
   },
   "scripts": {
     "build:sync-domain-aliases": "node src/Setup/CliSetup.ts sync --adapter netlify",
-    "build:folder-to-html": "node scripts/legacy/folderToHTML.cjs",
-    "build:redirects-to-html": "node scripts/legacy/redirectsToHTML.cjs",
-    "build": "npm run build:sync-domain-aliases && npm run build:folder-to-html && npm run build:redirects-to-html",
+    "build": "pnpm build:sync-domain-aliases && pnpm build:site",
     "typecheck": "tsc --noEmit",
     "lint": "node scripts/lint.mjs",
     "lint:fix": "node scripts/lint.mjs --fix",
@@ -28,7 +26,8 @@
     "check:changed": "node scripts/check-changed.mjs",
     "check": "pnpm ensure-deps && pnpm typecheck && pnpm lint && pnpm quality && pnpm test && pnpm check:aliases",
     "sync": "node src/Setup/CliSetup.ts sync",
-    "check:aliases": "node src/Setup/CliSetup.ts check"
+    "check:aliases": "node src/Setup/CliSetup.ts check",
+    "build:site": "node src/Setup/SiteSetup.ts"
   },
   "repository": {
     "type": "git",

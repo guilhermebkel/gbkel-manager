@@ -12,7 +12,7 @@ One package, pnpm, Node 22, TypeScript run by Node itself (type stripping, no bu
 - `Adapters`: one file per platform (`NetlifyAdapter`, `DockerAdapter`, `CapRoverAdapter`, `CloudflareWorkersAdapter`). An adapter never imports another adapter. Each one declares its capabilities (`canProxy`, `canMatchPathParams`); a rule it cannot honor is an error at `sync`, not a surprise in production.
 - `Setup`: entry points (the CLI, the Docker server, the Worker entry) and `EnvSetup`, the only place that reads `process.env`.
 
-Other folders: `static/` (published assets, outside lint), `pages/` (static HTML), `scripts/` (harness scripts), `tooling/` (our lint rules), `docs/`, `.github/`. Old build scripts live in `scripts/legacy/` until each is replaced (`@legacy`, removed by the adapters work).
+Other folders: `static/` (published assets, outside lint), `pages/` (static HTML), `scripts/` (harness scripts), `tooling/` (our lint rules), `docs/`, `.github/`.
 
 Every file in a mapped folder ends its name with the folder's name, singular (`NetlifyAdapter.ts`; lint `local/file-suffix`). One class per file. Tests sit next to the file they test (`*.test.ts`).
 
@@ -28,7 +28,7 @@ Every file in a mapped folder ends its name with the folder's name, singular (`N
     pnpm quality       # knip, jscpd, dpdm (import cycles)
     pnpm check:changed # what the branch changed against origin/main (run before a commit)
     pnpm check         # everything (CI runs it, split in parallel jobs)
-    pnpm build         # the Netlify build (legacy scripts for now)
+    pnpm build         # the Netlify build: sync the aliases, then generate the static site pages
 
 ## How to act on a task
 

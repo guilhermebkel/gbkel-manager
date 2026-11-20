@@ -53,7 +53,8 @@
 		{
 			"from": "mail.guilherr.me",
 			"to": "/pages/mail",
-			"statusCode": 200
+			"statusCode": 200,
+			"adapters": ["netlify", "cloudflare-workers"]
 		},
 		{
 			"from": "behance.guilherr.me",
@@ -83,7 +84,8 @@
 		{
 			"from": "static.guilherr.me/*",
 			"to": "/static/:splat",
-			"statusCode": 200
+			"statusCode": 200,
+			"adapters": ["netlify", "cloudflare-workers"]
 		},
 		{
 			"from": "ga.guilherr.me",
