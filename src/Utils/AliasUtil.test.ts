@@ -29,7 +29,7 @@ describe("AliasUtil.getPathPattern()", () => {
 
 describe("AliasUtil.selectFor()", () => {
   it("keeps the aliases with no restriction and the ones that name the adapter", () => {
-    expect(AliasUtil.selectFor([REDIRECT, LOCAL], "docker")).toStrictEqual([REDIRECT]);
+    expect(AliasUtil.selectFor([REDIRECT, LOCAL], "caprover")).toStrictEqual([REDIRECT]);
     expect(AliasUtil.selectFor([REDIRECT, LOCAL], "netlify")).toStrictEqual([REDIRECT, LOCAL]);
   });
 });

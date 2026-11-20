@@ -8,7 +8,7 @@ The repository was JavaScript. The harness is type-aware (Oxlint with type infor
 
 ## Decision
 
-Source is TypeScript with erasable syntax only (`erasableSyntaxOnly`, `verbatimModuleSyntax`), run directly by Node 22 through type stripping. `tsc --noEmit` is the type check. The harness scripts stay `.mjs`. A bundler is used only where the platform requires one (wrangler for Cloudflare Workers).
+Source is TypeScript with erasable syntax only (`erasableSyntaxOnly`, `verbatimModuleSyntax`), run directly by Node 22 through type stripping. `tsc --noEmit` is the type check. The harness scripts stay `.mjs`. No bundler is used: the Docker image copies the sources as they are.
 
 ## Consequences
 

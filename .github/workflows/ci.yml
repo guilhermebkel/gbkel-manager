@@ -55,3 +55,27 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
+
+  image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      # Why: the image is built but not pushed, so a broken Dockerfile fails the pull request and not the release.
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          load: true
+          tags: gbkel-redirects:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Start the image and answer a redirect through it
+        run: |
+          docker run --detach --name redirects --publish 3000:3000 gbkel-redirects:ci
+          for attempt in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:3000/healthz > /dev/null; then break; fi
+            sleep 1
+          done
+          status=$(curl -s -o /dev/null -w '%{http_code}' -H 'Host: linkedin.guilherr.me' http://127.0.0.1:3000/)
+          if [ "$status" != "301" ]; then docker logs redirects; exit 1; fi

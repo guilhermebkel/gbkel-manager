@@ -1,0 +1,64 @@
+name: CapRover deploy
+description: Create or update the CapRover app that runs the redirect server and deploy an image to it.
+
+inputs:
+  url:
+    description: CapRover dashboard URL (https://captain.<root domain>)
+    required: true
+  password:
+    description: CapRover password
+    required: true
+  app:
+    description: App name
+    required: true
+  image:
+    description: Full image name with tag
+    required: true
+  aliases-url:
+    description: Where the server reads domainAliases.json from (raw file on the main branch)
+    required: true
+  git-sha:
+    description: Commit being deployed
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        CAPROVER_URL: ${{ inputs.url }}
+        CAPROVER_PASSWORD: ${{ inputs.password }}
+        APP: ${{ inputs.app }}
+        IMAGE_NAME: ${{ inputs.image }}
+        ALIASES_URL: ${{ inputs.aliases-url }}
+        GIT_SHA: ${{ inputs.git-sha }}
+      run: |
+        set -euo pipefail
+        api() {
+          curl -fsS --max-time 900 -H "x-captain-auth: ${TOKEN}" -H "x-namespace: captain" -H "content-type: application/json" "$@"
+        }
+        ok() { jq -e '.status == 100' > /dev/null; }
+
+        TOKEN=$(curl -fsS -H "x-namespace: captain" -H "content-type: application/json" \
+          -d "$(jq -n --arg password "$CAPROVER_PASSWORD" '{password: $password}')" \
+          "${CAPROVER_URL}/api/v2/login" | jq -er '.data.token')
+        echo "::add-mask::${TOKEN}"
+
+        definition() { api "${CAPROVER_URL}/api/v2/user/apps/appDefinitions" | jq -c --arg app "$APP" '.data.appDefinitions[] | select(.appName == $app)'; }
+
+        if [ -z "$(definition)" ]; then
+          api -d "$(jq -n --arg app "$APP" '{appName: $app, hasPersistentData: false}')" \
+            "${CAPROVER_URL}/api/v2/user/apps/appDefinitions/register" | ok
+        fi
+
+        # Why: the server keeps no state, so it can run on more than one instance; it listens on 3000 (the Dockerfile) and CapRover keeps the HTTPS side.
+        update=$(definition | jq -c --arg aliases "$ALIASES_URL" '
+          .instanceCount = 1
+          | .forceSsl = true
+          | .containerHttpPort = 3000
+          | .envVars = ([.envVars[]? | select(.key != "ALIASES_URL")] + [{key: "ALIASES_URL", value: $aliases}])')
+        api -d "$update" "${CAPROVER_URL}/api/v2/user/apps/appDefinitions/update" | ok
+
+        captain=$(jq -nc --arg image "$IMAGE_NAME" '{schemaVersion: 2, imageName: $image}')
+        api -d "$(jq -n --arg content "$captain" --arg sha "$GIT_SHA" '{captainDefinitionContent: $content, gitHash: $sha}')" \
+          "${CAPROVER_URL}/api/v2/user/apps/appData/${APP}" | ok

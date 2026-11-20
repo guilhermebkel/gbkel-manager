@@ -157,7 +157,7 @@ ruleTester.run("file-suffix", localRules.rules["file-suffix"], {
   valid: [
     { name: "an adapter", filename: "src/Adapters/NetlifyAdapter.ts", code: FILE_SUFFIX_CODE },
     { name: "a test whose name before .test carries the suffix", filename: "src/Utils/MatchUtil.test.ts", code: FILE_SUFFIX_CODE },
-    { name: "a file in a subfolder carries the top folder's suffix", filename: "src/Adapters/Docker/ProxyAdapter.ts", code: FILE_SUFFIX_CODE },
+    { name: "a file in a subfolder carries the top folder's suffix", filename: "src/Adapters/CapRover/ApiAdapter.ts", code: FILE_SUFFIX_CODE },
     { name: "a generator", filename: "src/Generators/RedirectsPageGenerator.ts", code: FILE_SUFFIX_CODE },
     { name: "a setup", filename: "src/Setup/CliSetup.ts", code: FILE_SUFFIX_CODE },
     { name: "a protocol", filename: "src/Protocols/AliasProtocol.ts", code: FILE_SUFFIX_CODE },

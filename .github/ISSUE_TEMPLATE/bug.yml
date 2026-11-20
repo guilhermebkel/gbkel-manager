@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        **Never paste tokens, passwords or private URLs.** Describe the shape ("an alias with two path parameters on the Docker adapter") or use invented data.
+        **Never paste tokens, passwords or private URLs.** Describe the shape ("an alias with two path parameters on the CapRover adapter") or use invented data.
   - type: textarea
     id: what-happened
     attributes:
@@ -33,7 +33,6 @@ body:
       options:
         - Netlify
         - CapRover (Docker image)
-        - Cloudflare Workers
         - Local
         - Not known
     validations:

@@ -1,6 +1,6 @@
 export type AliasMode = "redirect" | "proxy";
 
-export type AdapterName = "netlify" | "docker" | "caprover" | "cloudflare-workers";
+export type AdapterName = "netlify" | "caprover";
 
 export type Alias = {
   from: string;

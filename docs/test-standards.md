@@ -15,7 +15,7 @@ Many fast low-level tests, few that start a real server. Pick the lowest level t
 
 - **Core (`Utils`, `Schemas`, `Generators`).** Pure unit tests with literals worked out by hand. Every alias in `domainAliases.json` that has a path parameter has a test of its own.
 - **Config-generating adapters.** Test the generated content (`_redirects`, the domain list sent to the API) and the call made to a fake client.
-- **Runtime adapters.** The Docker server is tested with a real HTTP server on port 0 and a real client; the proxy target is a second local server. The Worker is tested by calling its `fetch` with a `Request`.
+- **The CapRover adapter.** `handle` is tested with `Request` objects and a fake upstream; `sync` with a fake CapRover client; the redirect server (`ServerSetup`) with a real HTTP server on port 0 and a real client, the proxy target being a second local server.
 - **A bug found at a high level** is first reproduced in a lower-level test, then fixed.
 
 ## Reliable tests
@@ -23,7 +23,7 @@ Many fast low-level tests, few that start a real server. Pick the lowest level t
 - **Wait for the condition, never for time (lint).** `local/no-fixed-wait` rejects `setTimeout` in tests. Use `vi.waitFor`, `expect.poll` or a fake timer.
 - **Ports are 0.** A test server listens on port 0 and reads the port back.
 - **Close what you open.** A server or a client left open in a test is a bug: close it in `afterEach`.
-- **No network.** Tests never reach Netlify, CapRover, Cloudflare or the public internet: the platform client is a double passed in through the constructor.
+- **No network.** Tests never reach Netlify, CapRover or the public internet: the platform client is a double passed in through the constructor.
 
 ## What a test checks
 
@@ -42,7 +42,7 @@ Many fast low-level tests, few that start a real server. Pick the lowest level t
 ## Real code, doubles only at the edges
 
 - **Run the real thing.** Real matcher, real schemas, a real local HTTP server. Don't mock this repository's own modules: if a test needs that, the seam is wrong.
-- **Doubles only where the process meets the outside:** a platform client (Netlify, CapRover, Cloudflare), the file system when a path is not the point, the clock. Assert what the code did with them.
+- **Doubles only where the process meets the outside:** a platform client (Netlify, CapRover), the file system when a path is not the point, the clock. Assert what the code did with them.
 - **Production code has no test-only methods.**
 
 ## Before finishing: the mutation check

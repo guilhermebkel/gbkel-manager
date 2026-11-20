@@ -8,7 +8,7 @@ const ALIASES: Alias[] = [
   { from: "seo.example.com/:url/:device", to: "https://lighthouse.test/?u=:url&d=:device", statusCode: 301 },
   { from: "blog.example.com/*", to: "https://example.com/:splat", statusCode: 200 },
   { from: "blog.example.com", to: "https://example.com/blog", statusCode: 301 },
-  { from: "docker-only.example.com", to: "https://x.test", statusCode: 301, adapters: ["docker"] },
+  { from: "caprover-only.example.com", to: "https://x.test", statusCode: 301, adapters: ["caprover"] },
 ];
 
 const EXPECTED_REDIRECTS = [

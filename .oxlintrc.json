@@ -23,6 +23,7 @@
     "node_modules/",
     "coverage/",
     "lint-fixtures-*/",
+    "scripts/legacy/",
     "static/"
   ],
   "rules": {
@@ -769,7 +770,7 @@
                   "dotenv",
                   "netlify"
                 ],
-                "message": "The core layers have no Node built-ins or IO libraries: they must run in a Cloudflare Worker too."
+                "message": "The core layers have no Node built-ins or IO libraries: they stay portable and testable without IO."
               }
             ]
           }
@@ -778,27 +779,27 @@
           "error",
           {
             "name": "process",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "console",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setTimeout",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setInterval",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setImmediate",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "Buffer",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           }
         ],
         "no-restricted-properties": [
@@ -851,7 +852,7 @@
                   "dotenv",
                   "netlify"
                 ],
-                "message": "The core layers have no Node built-ins or IO libraries: they must run in a Cloudflare Worker too."
+                "message": "The core layers have no Node built-ins or IO libraries: they stay portable and testable without IO."
               }
             ]
           }
@@ -860,27 +861,27 @@
           "error",
           {
             "name": "process",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "console",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setTimeout",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setInterval",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setImmediate",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "Buffer",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           }
         ],
         "no-restricted-properties": [
@@ -932,7 +933,7 @@
                   "dotenv",
                   "netlify"
                 ],
-                "message": "The core layers have no Node built-ins or IO libraries: they must run in a Cloudflare Worker too."
+                "message": "The core layers have no Node built-ins or IO libraries: they stay portable and testable without IO."
               }
             ]
           }
@@ -941,27 +942,27 @@
           "error",
           {
             "name": "process",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "console",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setTimeout",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setInterval",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setImmediate",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "Buffer",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           }
         ],
         "no-restricted-properties": [
@@ -1012,7 +1013,7 @@
                   "dotenv",
                   "netlify"
                 ],
-                "message": "The core layers have no Node built-ins or IO libraries: they must run in a Cloudflare Worker too."
+                "message": "The core layers have no Node built-ins or IO libraries: they stay portable and testable without IO."
               }
             ]
           }
@@ -1021,27 +1022,27 @@
           "error",
           {
             "name": "process",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "console",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setTimeout",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setInterval",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setImmediate",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "Buffer",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           }
         ],
         "no-restricted-properties": [
@@ -1091,7 +1092,7 @@
                   "dotenv",
                   "netlify"
                 ],
-                "message": "The core layers have no Node built-ins or IO libraries: they must run in a Cloudflare Worker too."
+                "message": "The core layers have no Node built-ins or IO libraries: they stay portable and testable without IO."
               }
             ]
           }
@@ -1100,27 +1101,27 @@
           "error",
           {
             "name": "process",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "console",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setTimeout",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setInterval",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "setImmediate",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           },
           {
             "name": "Buffer",
-            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) run in any runtime (Node, Docker, Cloudflare Workers): no process, console, timers or Buffer; pass what they need in."
+            "message": "The core layers (Errors, Protocols, Schemas, Utils, Generators) are portable and testable without IO: no process, console, timers or Buffer; pass what they need in."
           }
         ],
         "no-restricted-properties": [
@@ -1206,53 +1207,6 @@
               {
                 "regex": "^#app/Adapters/",
                 "message": "An adapter never imports another adapter."
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "files": [
-        "src/Adapters/CloudflareWorkersAdapter.ts"
-      ],
-      "rules": {
-        "no-restricted-imports": [
-          "error",
-          {
-            "patterns": [
-              {
-                "group": [
-                  "../*",
-                  "../**"
-                ],
-                "message": "Import through the app alias instead of a relative parent path."
-              },
-              {
-                "group": [
-                  "#app/Setup/**"
-                ],
-                "message": "Adapters import only the layers below them."
-              },
-              {
-                "regex": "^#app/Adapters/",
-                "message": "An adapter never imports another adapter."
-              },
-              {
-                "group": [
-                  "node:*",
-                  "fs",
-                  "path",
-                  "os",
-                  "net",
-                  "http",
-                  "https",
-                  "child_process",
-                  "worker_threads",
-                  "dotenv",
-                  "netlify"
-                ],
-                "message": "The Cloudflare Workers adapter runs in the Workers runtime: no Node built-ins."
               }
             ]
           }

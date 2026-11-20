@@ -4,9 +4,7 @@ import { AliasUtil } from "#app/Utils/AliasUtil.ts";
 
 const ADAPTER_NAMES: ReadonlySet<AdapterName> = new Set<AdapterName>([
   "netlify",
-  "docker",
   "caprover",
-  "cloudflare-workers",
 ]);
 const ABSOLUTE_TARGET = /^https?:\/\/\S+$/;
 const LOCAL_TARGET = /^\/\S*$/;
@@ -73,6 +71,9 @@ export class AliasSchema {
     if (!ABSOLUTE_TARGET.test(alias.to) && !LOCAL_TARGET.test(alias.to)) {
       throw new InvalidAliasError("\"to\" must be an http(s) URL or a path that starts with \"/\"", alias.from);
     }
+    if (AliasSchema.hasParamInAuthority(alias.to)) {
+      throw new InvalidAliasError("a path parameter cannot be part of the host of \"to\"", alias.from);
+    }
     const known = new Set(AliasUtil.getParamNames(AliasUtil.getPathPattern(alias)));
     if (AliasUtil.getPathPattern(alias).includes(SPLAT)) {
       known.add("splat");
@@ -81,6 +82,11 @@ export class AliasSchema {
     if (unknown.length > 0) {
       throw new InvalidAliasError(`"to" uses :${unknown.join(", :")}, which "from" does not define`, alias.from);
     }
+  }
+
+  static hasParamInAuthority(target: string): boolean {
+    const [authority = ""] = target.replace(/^https?:\/\//, "").split(/[/?#]/);
+    return AliasUtil.getParamNames(authority).length > 0 || authority.includes(SPLAT);
   }
 
   static assertStatusCode(alias: Alias): void {

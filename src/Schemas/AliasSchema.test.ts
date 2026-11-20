@@ -35,6 +35,7 @@ describe("AliasSchema.parse()", () => {
       ["a from that is not a host", wrap({ ...VALID, from: "localhost" }), "localhost: \"from\" must start with a host"],
       ["a splat that is not last", wrap({ ...VALID, from: "a.example.com/*/x" }), "\"*\" is allowed only as the last"],
       ["a target that is not a URL", wrap({ ...VALID, to: "ftp://x" }), "a.example.com: \"to\" must be an http(s) URL"],
+      ["a parameter in the host of the target", wrap({ ...VALID, from: "a.example.com/:host", to: "https://:host/x" }), "cannot be part of the host"],
       ["a target parameter that from lacks", wrap({ ...VALID, to: "https://b.test/:id" }), "uses :id, which \"from\" does not define"],
       ["a status code that is neither", wrap({ ...VALID, statusCode: 404 }), "\"statusCode\" must be 200 (proxy) or 301"],
       ["an unknown adapter", wrap({ ...VALID, adapters: ["vercel"] }), "\"adapters\" must be a non-empty list of: netlify"],

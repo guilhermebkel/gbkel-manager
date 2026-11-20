@@ -7,10 +7,10 @@ When your output names a domain concept (issue title, test name, proposal), use 
 | Area | ADR |
 | --- | --- |
 | Where the harness comes from | 0001 |
-| Core and adapters | 0002 |
+| Core and adapters (Netlify, CapRover) | 0002 |
 | Layers, file suffixes and imports | 0003 |
 | TypeScript without a build step | 0004 |
 | Oxlint with a minimal ESLint | 0005 |
-| How the Docker image is released | 0006 |
+| How the CapRover image is released | 0006 |
 
 If your output contradicts an ADR, say so explicitly: _Contradicts ADR-0002 (...), but worth reopening because..._

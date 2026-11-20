@@ -1,0 +1,32 @@
+name: Sync CapRover domains
+
+on:
+  push:
+    branches: [main]
+    paths: [domainAliases.json]
+  workflow_dispatch:
+
+concurrency:
+  group: sync-caprover-domains
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+# Why: the server in the image reloads domainAliases.json by itself; only the custom domains and their certificates need the CapRover API.
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: node src/Setup/CliSetup.ts sync --adapter caprover
+        env:
+          CAPROVER_URL: ${{ vars.CAPROVER_URL }}
+          CAPROVER_PASSWORD: ${{ secrets.CAPROVER_PASSWORD }}
+          CAPROVER_APP: ${{ vars.CAPROVER_APP }}

@@ -26,15 +26,8 @@ const listSourceFiles = (dir) => {
 };
 
 describe("the core layers are runtime-agnostic", () => {
-  it.each(CORE_LAYERS)("%s imports no Node module, so the same code can run in a Cloudflare Worker", (layer) => {
+  it.each(CORE_LAYERS)("%s imports no Node module, so the same code runs with no IO", (layer) => {
     const offenders = listSourceFiles(join(SRC, layer)).filter((file) => NODE_IMPORT.test(readFileSync(file, "utf8")));
-
-    expect(offenders).toStrictEqual([]);
-  });
-
-  it("the Cloudflare Workers adapter imports no Node module", () => {
-    const file = join(SRC, "Adapters", "CloudflareWorkersAdapter.ts");
-    const offenders = [file].filter((path) => existsSync(path) && NODE_IMPORT.test(readFileSync(path, "utf8")));
 
     expect(offenders).toStrictEqual([]);
   });

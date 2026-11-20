@@ -11,20 +11,20 @@ const LOCAL: Alias = { from: "s.example.com/*", to: "/static/:splat", statusCode
 
 describe("CapabilityUtil.assertServable()", () => {
   it("returns the aliases the adapter serves", () => {
-    const served = CapabilityUtil.assertServable("docker", { ...REDIRECT_ONLY, canProxy: true }, [REDIRECT, PROXY, LOCAL]);
+    const served = CapabilityUtil.assertServable("caprover", { ...REDIRECT_ONLY, canProxy: true }, [REDIRECT, PROXY, LOCAL]);
 
     expect(served).toStrictEqual([REDIRECT, PROXY]);
   });
 
   it("fails naming the alias and the capability when the adapter lacks one", () => {
-    const runAssertion = () => CapabilityUtil.assertServable("cloudflare-workers", REDIRECT_ONLY, [REDIRECT, PROXY]);
+    const runAssertion = () => CapabilityUtil.assertServable("netlify", REDIRECT_ONLY, [REDIRECT, PROXY]);
 
     expect(runAssertion).toThrow(UnsupportedAliasError);
-    expect(runAssertion).toThrow("cloudflare-workers cannot serve p.example.com/*: it needs canProxy");
+    expect(runAssertion).toThrow("netlify cannot serve p.example.com/*: it needs canProxy");
   });
 
   it("does not look at an alias restricted to another adapter", () => {
-    const served = CapabilityUtil.assertServable("docker", REDIRECT_ONLY, [REDIRECT, LOCAL]);
+    const served = CapabilityUtil.assertServable("caprover", REDIRECT_ONLY, [REDIRECT, LOCAL]);
 
     expect(served).toStrictEqual([REDIRECT]);
   });

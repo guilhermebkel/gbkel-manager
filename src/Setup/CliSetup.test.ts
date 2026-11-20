@@ -20,8 +20,8 @@ describe("CliSetup.parseArguments()", () => {
 });
 
 describe("CliSetup.run()", () => {
-  it("checks that every available adapter can serve the real alias file, without touching any platform", async () => {
-    const status = await CliSetup.run(["check", "--adapter", "netlify"]);
+  it("checks that every adapter can serve what the real alias file asks of it, without touching any platform", async () => {
+    const status = await CliSetup.run(["check"]);
 
     expect(status).toBe(0);
   });

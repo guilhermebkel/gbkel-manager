@@ -12,4 +12,4 @@ With several adapters and a shared core, a name like `Netlify.ts` hides what a f
 
 ## Consequences
 
-Names are longer. The order of layers must be kept in the lint config when a layer is added. The alias works unchanged in Node, TypeScript, Vitest and bundlers (wrangler).
+Names are longer. The order of layers must be kept in the lint config when a layer is added. The alias works unchanged in Node, TypeScript, Vitest and the Docker image.

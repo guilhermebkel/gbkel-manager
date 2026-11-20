@@ -12,7 +12,6 @@ const CONFIG_FILE = ".oxlintrc.json";
 const LOCAL_PLUGIN = "./tooling/eslint-local-rules.mjs";
 const UTIL_FILE = "src/Utils/MatchUtil.ts";
 const ADAPTER_FILE = "src/Adapters/NetlifyAdapter.ts";
-const WORKER_FILE = "src/Adapters/CloudflareWorkersAdapter.ts";
 const TEST_FILE = "src/Utils/MatchUtil.test.ts";
 
 const writeConfig = () => {
@@ -50,10 +49,9 @@ const FAILING_EXAMPLES = [
   ["process.env outside EnvSetup", ADAPTER_FILE, "export const read = () => process.env.SECRET;\n", "eslint(no-restricted-properties)"],
   ["a util that imports a higher layer", UTIL_FILE, "import { NetlifyAdapter } from \"#app/Adapters/NetlifyAdapter.ts\";\nexport const make = NetlifyAdapter;\n", RESTRICTED_IMPORT],
   ["an adapter that imports the setup", ADAPTER_FILE, "import { CliSetup } from \"#app/Setup/CliSetup.ts\";\nexport const make = CliSetup;\n", RESTRICTED_IMPORT],
-  ["an adapter that imports another adapter", ADAPTER_FILE, "import { DockerAdapter } from \"#app/Adapters/DockerAdapter.ts\";\nexport const make = DockerAdapter;\n", RESTRICTED_IMPORT],
+  ["an adapter that imports another adapter", ADAPTER_FILE, "import { CapRoverAdapter } from \"#app/Adapters/CapRoverAdapter.ts\";\nexport const make = CapRoverAdapter;\n", RESTRICTED_IMPORT],
   ["a util that imports a node module", UTIL_FILE, "import { randomInt } from \"node:crypto\";\nexport const roll = () => randomInt(6);\n", RESTRICTED_IMPORT],
   ["a util that imports an IO library", UTIL_FILE, "import Netlify from \"netlify\";\nexport const make = Netlify;\n", RESTRICTED_IMPORT],
-  ["the Cloudflare Workers adapter importing a node module", WORKER_FILE, "import { readFileSync } from \"node:fs\";\nexport const make = readFileSync;\n", RESTRICTED_IMPORT],
   ["a relative parent import", UTIL_FILE, "import { OtherUtil } from \"../Utils/OtherUtil.ts\";\nexport const make = OtherUtil;\n", RESTRICTED_IMPORT],
   ["the core reading process", UTIL_FILE, "export const read = () => process.cwd();\n", "eslint(no-restricted-globals)"],
   ["the core drawing a random number", UTIL_FILE, "export const draw = () => Math.random();\n", "eslint(no-restricted-properties)"],

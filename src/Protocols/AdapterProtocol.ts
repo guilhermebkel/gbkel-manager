@@ -11,3 +11,5 @@ export interface AdapterPort {
   readonly capabilities: AdapterCapabilities;
   sync(aliases: Alias[]): Promise<void>;
 }
+
+export interface RuntimeAdapterPort extends AdapterPort { handle(request: Request): Promise<Response> }

@@ -54,7 +54,7 @@
 			"from": "mail.guilherr.me",
 			"to": "/pages/mail",
 			"statusCode": 200,
-			"adapters": ["netlify", "cloudflare-workers"]
+			"adapters": ["netlify"]
 		},
 		{
 			"from": "behance.guilherr.me",
@@ -85,7 +85,7 @@
 			"from": "static.guilherr.me/*",
 			"to": "/static/:splat",
 			"statusCode": 200,
-			"adapters": ["netlify", "cloudflare-workers"]
+			"adapters": ["netlify"]
 		},
 		{
 			"from": "ga.guilherr.me",
@@ -115,7 +115,8 @@
 		{
 			"from": "redirects.guilherr.me",
 			"to": "/redirects.html",
-			"statusCode": 200
+			"statusCode": 200,
+			"adapters": ["netlify"]
 		},
 		{
 			"from": "slug.guilherr.me",
