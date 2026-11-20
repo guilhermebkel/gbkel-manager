@@ -1,27 +1,58 @@
 {
   "name": "gbkel-manager",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "imports": {
+    "#app/*": "./src/*"
+  },
   "scripts": {
-    "build:folder-to-html": "node scripts/folderToHTML.js",
-    "build:redirects-to-html": "node scripts/redirectsToHTML.js",
-    "build:sync-domain-aliases": "node scripts/syncDomainAliases.js",
-    "build": "npm run build:sync-domain-aliases && npm run build:folder-to-html && npm run build:redirects-to-html"
+    "build:sync-domain-aliases": "node src/Setup/CliSetup.ts sync --adapter netlify",
+    "build:folder-to-html": "node scripts/legacy/folderToHTML.cjs",
+    "build:redirects-to-html": "node scripts/legacy/redirectsToHTML.cjs",
+    "build": "npm run build:sync-domain-aliases && npm run build:folder-to-html && npm run build:redirects-to-html",
+    "typecheck": "tsc --noEmit",
+    "lint": "node scripts/lint.mjs",
+    "lint:fix": "node scripts/lint.mjs --fix",
+    "lint:oxlint": "oxlint --type-aware",
+    "lint:eslint": "eslint --cache --cache-strategy content",
+    "quality": "knip && jscpd && dpdm --no-warning --no-tree --exit-code circular:1 --transform --tsconfig tsconfig.json \"src/**/*.ts\"",
+    "test": "vitest run",
+    "test:changed": "node scripts/test-changed.mjs",
+    "ensure-deps": "node scripts/ensure-deps.mjs",
+    "lint-staged": "lint-staged",
+    "check:changed": "node scripts/check-changed.mjs",
+    "check": "pnpm ensure-deps && pnpm typecheck && pnpm lint && pnpm quality && pnpm test && pnpm check:aliases",
+    "sync": "node src/Setup/CliSetup.ts sync",
+    "check:aliases": "node src/Setup/CliSetup.ts check"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guilhermebkel/gbkel-redirect.git"
+    "url": "git+https://github.com/guilhermebkel/gbkel-manager.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/guilhermebkel/gbkel-redirect/issues"
-  },
-  "homepage": "https://github.com/guilhermebkel/gbkel-redirect#readme",
   "dependencies": {
-    "dotenv": "^8.2.0",
     "netlify": "^6.1.22"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@types/node": "^22",
+    "@vitest/eslint-plugin": "^1.6.28",
+    "dpdm": "^4.3.0",
+    "eslint": "^10.13.0",
+    "eslint-plugin-sonarjs": "^4.2.2",
+    "globals": "^17.13.0",
+    "jscpd": "^5.4.2",
+    "knip": "^6.43.0",
+    "lint-staged": "^17.6.0",
+    "oxlint": "^1.90.0",
+    "oxlint-tsgolint": "^7.0.2005",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.0",
+    "vitest": "^5.0.5"
   }
 }

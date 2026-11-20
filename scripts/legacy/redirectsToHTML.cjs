@@ -2,7 +2,7 @@ const fs = require("fs")
 const path = require("path")
 
 const getFilePath = (fileName) => {
-	return path.join(__dirname, "..", fileName)
+	return path.join(__dirname, "..", "..", fileName)
 }
 
 const buildRedirectsHTML = (redirects = []) => {

@@ -1,3 +1,11 @@
-.env
-node_modules
+.env*
+!.env.example
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.eslintcache
+.vitest/
+lint-fixtures-*/
 _redirects
+redirects.html

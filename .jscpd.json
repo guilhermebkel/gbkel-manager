@@ -1,0 +1,24 @@
+{
+  "path": [
+    "src",
+    "scripts",
+    "tooling"
+  ],
+  "format": [
+    "typescript",
+    "javascript"
+  ],
+  "ignore": [
+    "**/*.test.ts",
+    "**/*.test.mjs",
+    "**/node_modules/**",
+    "**/dist/**",
+    "scripts/legacy/**",
+    "static/**"
+  ],
+  "minTokens": 50,
+  "threshold": 1,
+  "reporters": [
+    "console"
+  ]
+}

@@ -3,7 +3,7 @@ const path = require("path")
 
 const STATIC_FOLDER_NAME = "static"
 
-const staticFolder = path.join(__dirname, "..", STATIC_FOLDER_NAME)
+const staticFolder = path.join(__dirname, "..", "..", STATIC_FOLDER_NAME)
 
 const dirItems = [
 	{
