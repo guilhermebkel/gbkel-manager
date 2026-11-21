@@ -21,7 +21,7 @@ The version commit is pushed by `github-actions[bot]`, so a rule that blocks dir
 | Variable | `CAPROVER_APP` | the app name, for example `gbkel-redirects` |
 | Secret | `CAPROVER_PASSWORD` | the CapRover password |
 | Secret | `CLOUDFLARE_API_TOKEN` | a Cloudflare API token with `Zone > DNS > Edit` on the zone only |
-| Variable | `CLOUDFLARE_ZONE` | the zone name, for example `guilherr.me` |
+| Variable | `CLOUDFLARE_ZONE` | the zone **name**, for example `guilherr.me` (not the zone id) |
 | Variable | `CLOUDFLARE_CNAME_TARGET` | the host every claimed alias points to, for example the CapRover dashboard host |
 
 The package starts private on GitHub: make it public (Packages, the package, Package settings, Change visibility) or give CapRover a registry login with `read:packages`.

@@ -26,6 +26,9 @@ export class CloudflareAdapter implements AdapterPort {
   private readonly settings: CloudflareSettings;
 
   constructor(client: CloudflareClientPort, settings: CloudflareSettings) {
+    if (!settings.zoneName.includes(".")) {
+      throw new Error("CLOUDFLARE_ZONE must be the zone name, such as example.com, not the zone id");
+    }
     this.client = client;
     this.settings = settings;
   }
