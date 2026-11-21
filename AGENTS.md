@@ -1,4 +1,4 @@
-# gbkel-manager
+# gbkel-redirects
 
 The repository that manages my domains: domain aliases (redirects and proxies) served by an **adapter** (Netlify, or CapRover running a Docker image), and the static files at `static.guilherr.me`. Vocabulary is in `GLOSSARY.md`; decisions are in `docs/adr/`.
 

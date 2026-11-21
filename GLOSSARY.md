@@ -1,4 +1,4 @@
-# gbkel-manager
+# gbkel-redirects
 
 The words this repository uses.
 

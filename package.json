@@ -1,5 +1,5 @@
 {
-  "name": "gbkel-manager",
+  "name": "gbkel-redirects",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guilhermebkel/gbkel-manager.git"
+    "url": "git+https://github.com/guilhermebkel/gbkel-redirects.git"
   },
   "license": "ISC",
   "dependencies": {

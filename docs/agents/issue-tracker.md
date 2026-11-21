@@ -1,8 +1,8 @@
 # Issue tracker: GitHub
 
-Issues live as GitHub issues in `guilhermebkel/gbkel-manager`. Use the `gh` CLI: `gh issue view <n> --comments`, `gh issue list --json number,title,body,labels`, `gh issue comment`, `gh issue edit --add-label/--remove-label`, `gh issue close`. Infer the repo from `git remote -v`.
+Issues live as GitHub issues in `guilhermebkel/gbkel-redirects`. Use the `gh` CLI: `gh issue view <n> --comments`, `gh issue list --json number,title,body,labels`, `gh issue comment`, `gh issue edit --add-label/--remove-label`, `gh issue close`. Infer the repo from `git remote -v`.
 
-In Claude Code sessions `gh issue create` and some `gh issue` commands fail with "GraphQL is not available". Use the REST API instead: `gh api repos/guilhermebkel/gbkel-manager/issues -f title=... -f body=... -f 'labels[]=task'`, and `gh api repos/guilhermebkel/gbkel-manager/issues/<n>/comments -f body=...`.
+In Claude Code sessions `gh issue create` and some `gh issue` commands fail with "GraphQL is not available". Use the REST API instead: `gh api repos/guilhermebkel/gbkel-redirects/issues -f title=... -f body=... -f 'labels[]=task'`, and `gh api repos/guilhermebkel/gbkel-redirects/issues/<n>/comments -f body=...`.
 
 ## Issue types
 
