@@ -50,6 +50,14 @@ export class AliasUtil {
     return alias.adapters === undefined || alias.adapters.includes(adapter);
   }
 
+  static isClaimedBy(alias: Alias, adapter: AdapterName): boolean {
+    return alias.adapters?.includes(adapter) === true;
+  }
+
+  static selectClaimedBy(aliases: Alias[], adapter: AdapterName): Alias[] {
+    return aliases.filter((alias) => AliasUtil.isClaimedBy(alias, adapter));
+  }
+
   static selectFor(aliases: Alias[], adapter: AdapterName): Alias[] {
     return aliases.filter((alias) => AliasUtil.isServedBy(alias, adapter));
   }

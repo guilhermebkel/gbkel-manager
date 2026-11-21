@@ -78,9 +78,10 @@ describe("CapRoverAdapter.sync()", () => {
     const HOST_A = "a.example.com";
     const HOST_B = "b.example.com";
     const CHECKED: Alias[] = [
-      { from: HOST_A, to: "https://a.test", statusCode: 301 },
-      { from: `${HOST_B}/:id`, to: "https://b.test/:id", statusCode: 301 },
-      { from: HOST_B, to: "https://b.test", statusCode: 301 },
+      { from: HOST_A, to: "https://a.test", statusCode: 301, adapters: ["caprover"] },
+      { from: `${HOST_B}/:id`, to: "https://b.test/:id", statusCode: 301, adapters: ["caprover"] },
+      { from: HOST_B, to: "https://b.test", statusCode: 301, adapters: ["netlify", "caprover"] },
+      { from: "netlify-dns.example.com", to: "https://n.test", statusCode: 301 },
     ];
 
     const createRemote = (domains: CapRoverDomain[]) => {
@@ -100,6 +101,14 @@ describe("CapRoverAdapter.sync()", () => {
       await adapter.sync(CHECKED);
 
       expect(calls).toStrictEqual([`add ${HOST_B}`, `ssl ${HOST_B}`]);
+    });
+
+    it("does not register a host that no alias claims for caprover, because its DNS is elsewhere", async () => {
+      const { adapter, calls } = createRemote([]);
+
+      await adapter.sync(CHECKED);
+
+      expect(calls).not.toContain("add netlify-dns.example.com");
     });
 
     it("turns SSL on for a domain the app has without it", async () => {

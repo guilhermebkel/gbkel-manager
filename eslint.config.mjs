@@ -42,7 +42,7 @@ export default tseslint.config(
         { selector: ["objectLiteralProperty", "objectLiteralMethod", "typeProperty"], modifiers: ["requiresQuotes"], format: null },
         { selector: ["objectLiteralProperty", "objectLiteralMethod", "typeProperty"], format: null, filter: { regex: "^[a-z]+(_[a-z]+)+$", match: true } },
         // Why: `retry` (client request body) and `ok` (tool failure result) are wire-format names the client and the model already read.
-        { selector: "typeProperty", types: ["boolean"], format: null, filter: { regex: "^(ok|retry|multiple|required|isRequired)$", match: true } },
+        { selector: "typeProperty", types: ["boolean"], format: null, filter: { regex: "^(ok|retry|multiple|required|isRequired|success|proxied)$", match: true } },
         // Why: environment variable names keep the operating system's UPPER_CASE spelling.
         { selector: ["objectLiteralProperty", "typeProperty"], format: null, filter: { regex: "^[A-Z][A-Z0-9_]+$", match: true } },
         { selector: "classProperty", modifiers: ["static", "readonly"], format: ["UPPER_CASE", "camelCase"] },

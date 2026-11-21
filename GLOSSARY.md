@@ -23,6 +23,9 @@ A `to` that starts with `/`: the platform answers with one of its own files (`/s
 **Adapters (field)**:
 The optional list of adapters that serve an alias (`netlify`, `caprover`). Without it, every adapter serves the alias. An adapter ignores the aliases that name only others.
 
+**Claim**:
+An alias *claims* a host for an adapter when its `adapters` list names it. Only claims move a host: `cloudflare` and the CapRover domain sync look at claimed hosts, so an alias with no `adapters` field never changes any DNS record or CapRover domain.
+
 **Core**:
 The pure layers (`Errors`, `Protocols`, `Utils`, `Schemas`, `Generators`). They import no Node built-in and do no IO, so every adapter shares them and tests need no network.
 
@@ -36,7 +39,7 @@ The code that makes one platform serve the aliases. `NetlifyAdapter` writes `_re
 What an adapter declares it can do (`canProxy`, `canMatchPathParams`, `canServeLocalTargets`). An alias that needs one the adapter lacks, and is not restricted away from it, makes `sync` and `check` fail naming the alias.
 
 **Sync**:
-Making a platform match `domainAliases.json`: the Netlify domain aliases and `_redirects`, or the CapRover custom domains with SSL (adding the missing ones, removing the ones no longer in the file).
+Making a platform match `domainAliases.json`: the Netlify domain aliases and `_redirects`; the Cloudflare CNAME of each claimed host; or the CapRover custom domains with SSL (adding the missing claimed ones, removing the ones no longer claimed). Cloudflare runs before CapRover.
 
 **Check**:
 `pnpm check:aliases`: validate the file and the capabilities of every adapter, with no network.

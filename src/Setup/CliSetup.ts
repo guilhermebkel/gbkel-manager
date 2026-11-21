@@ -1,11 +1,10 @@
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import type { CliArguments, CliCommand } from "#app/Protocols/CliProtocol.ts";
-import type { AdapterName } from "#app/Protocols/AliasProtocol.ts";
+import type { PlatformName } from "#app/Protocols/AdapterProtocol.ts";
 import { AliasSchema } from "#app/Schemas/AliasSchema.ts";
 import { AdapterSetup } from "#app/Setup/AdapterSetup.ts";
 import { EnvSetup } from "#app/Setup/EnvSetup.ts";
-import { CapabilityUtil } from "#app/Utils/CapabilityUtil.ts";
 
 const ALIASES_FILE = "domainAliases.json";
 const FIRST_USER_ARG = 2;
@@ -22,7 +21,7 @@ export class CliSetup {
     if (adapterIndex === -1) {
       return { command };
     }
-    const adapter = rest[adapterIndex + 1] as AdapterName | undefined;
+    const adapter = rest[adapterIndex + 1] as PlatformName | undefined;
     if (adapter === undefined) {
       throw new Error(USAGE);
     }
@@ -37,8 +36,7 @@ export class CliSetup {
     const names = adapter === undefined ? AdapterSetup.listNames() : [adapter];
     for (const name of names) {
       const entry = AdapterSetup.getEntry(name);
-      const served = CapabilityUtil.assertServable(name, entry.capabilities, aliases);
-      console.log(`${name}: ${served.length} of ${aliases.length} aliases can be served`);
+      console.log(entry.check(aliases));
       if (command === "check") {
         continue;
       }

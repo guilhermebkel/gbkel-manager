@@ -20,6 +20,9 @@ The version commit is pushed by `github-actions[bot]`, so a rule that blocks dir
 | Variable | `CAPROVER_URL` | the dashboard, `https://captain.<root domain>` |
 | Variable | `CAPROVER_APP` | the app name, for example `gbkel-redirects` |
 | Secret | `CAPROVER_PASSWORD` | the CapRover password |
+| Secret | `CLOUDFLARE_API_TOKEN` | a Cloudflare API token with `Zone > DNS > Edit` on the zone only |
+| Variable | `CLOUDFLARE_ZONE` | the zone name, for example `guilherr.me` |
+| Variable | `CLOUDFLARE_CNAME_TARGET` | the host every claimed alias points to, for example the CapRover dashboard host |
 
 The package starts private on GitHub: make it public (Packages, the package, Package settings, Change visibility) or give CapRover a registry login with `read:packages`.
 
@@ -30,7 +33,12 @@ Edit `domainAliases.json` and merge to `main`. Two things follow, with no releas
 - the server reloads the file from `ALIASES_URL` every `ALIASES_RELOAD_SECONDS` (300 by default), so a new redirect works within five minutes; a reload that fails keeps the previous aliases;
 - the `Sync CapRover domains` workflow runs when the file changes and registers new hosts as custom domains of the app (and turns SSL on), and removes the hosts that left the file.
 
-Point the DNS of a new host to the CapRover machine **before** merging: CapRover checks it when the domain is added, and the sync fails if it does not resolve yet. Run the workflow again by hand after fixing the DNS.
+Only the aliases that list `"caprover"` in `adapters` are moved (`docs/adapters.md`). For each one the `Sync domains` workflow runs, in order:
+
+1. **Cloudflare:** creates (or repoints) a CNAME from the host to `CLOUDFLARE_CNAME_TARGET`, with the Cloudflare proxy off, so CapRover can issue its own certificate. It never deletes a record, and it stops if the host has a non-CNAME record.
+2. **CapRover:** adds the host as a custom domain of the app and turns SSL on, retrying a few times while the new record reaches the resolver; hosts no longer claimed are removed from the app.
+
+There is no manual DNS step for a host in the Cloudflare zone. For a host outside it, use the `adapters` list only after pointing its DNS yourself, and expect the `cloudflare` step to refuse it. Run the workflow again by hand after fixing anything.
 
 ## The server
 

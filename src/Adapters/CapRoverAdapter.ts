@@ -35,7 +35,7 @@ export class CapRoverAdapter implements RuntimeAdapterPort {
   async sync(aliases: Alias[]): Promise<void> {
     this.served = CapabilityUtil.assertServable(this.name, this.capabilities, aliases);
     if (this.remote !== undefined) {
-      await this.syncDomains(this.remote, this.served);
+      await this.syncDomains(this.remote, AliasUtil.selectClaimedBy(this.served, this.name));
     }
   }
 
@@ -48,9 +48,9 @@ export class CapRoverAdapter implements RuntimeAdapterPort {
     return isHealthCheck ? new Response("ok", { status: OK }) : new Response("Not found", { status: NOT_FOUND });
   }
 
-  private async syncDomains(remote: CapRoverRemote, served: Alias[]): Promise<void> {
+  private async syncDomains(remote: CapRoverRemote, claimed: Alias[]): Promise<void> {
     const { client, appName } = remote;
-    const wanted = new Set(served.map((alias) => AliasUtil.getHost(alias)));
+    const wanted = new Set(claimed.map((alias) => AliasUtil.getHost(alias)));
     const existing = await client.listCustomDomains(appName);
     const known = new Set(existing.map((domain) => domain.publicDomain));
     const withoutSsl = new Set(existing.filter((domain) => !domain.hasSsl).map((domain) => domain.publicDomain));

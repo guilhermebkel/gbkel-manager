@@ -34,6 +34,14 @@ describe("AliasUtil.selectFor()", () => {
   });
 });
 
+describe("AliasUtil.selectClaimedBy()", () => {
+  it("keeps only the aliases that name the adapter, not the ones open to every adapter", () => {
+    const claimed: Alias = { ...REDIRECT, adapters: ["caprover"] };
+
+    expect(AliasUtil.selectClaimedBy([REDIRECT, claimed, LOCAL], "caprover")).toStrictEqual([claimed]);
+  });
+});
+
 describe("AliasUtil.findMissingCapability()", () => {
   it("finds nothing missing for a plain redirect on any adapter", () => {
     expect(AliasUtil.findMissingCapability(REDIRECT, NOTHING)).toBeNull();

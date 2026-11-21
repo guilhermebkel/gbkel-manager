@@ -1,0 +1,46 @@
+name: Sync domains
+
+on:
+  push:
+    branches: [main]
+    paths: [domainAliases.json]
+  workflow_dispatch:
+
+concurrency:
+  group: sync-domains
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+# Why: the server in the image reloads domainAliases.json by itself; only the DNS records and the CapRover custom domains (with their certificates) need the APIs, and CapRover checks the DNS when it adds a domain, so Cloudflare goes first.
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Point the DNS at CapRover (Cloudflare)
+        run: node src/Setup/CliSetup.ts sync --adapter cloudflare
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ZONE: ${{ vars.CLOUDFLARE_ZONE }}
+          CLOUDFLARE_CNAME_TARGET: ${{ vars.CLOUDFLARE_CNAME_TARGET }}
+      # Why: a record just created can take a moment to reach the resolver CapRover uses, so a failed attempt is retried a few times before the job fails.
+      - name: Register the domains on CapRover
+        env:
+          CAPROVER_URL: ${{ vars.CAPROVER_URL }}
+          CAPROVER_PASSWORD: ${{ secrets.CAPROVER_PASSWORD }}
+          CAPROVER_APP: ${{ vars.CAPROVER_APP }}
+        run: |
+          for attempt in 1 2 3 4; do
+            if node src/Setup/CliSetup.ts sync --adapter caprover; then exit 0; fi
+            echo "attempt ${attempt} failed; waiting for the DNS"
+            sleep 30
+          done
+          exit 1

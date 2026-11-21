@@ -6,8 +6,10 @@ export type AdapterCapabilities = {
   canServeLocalTargets: boolean;
 };
 
+export type PlatformName = AdapterName | "cloudflare";
+
 export interface AdapterPort {
-  readonly name: AdapterName;
+  readonly name: PlatformName;
   readonly capabilities: AdapterCapabilities;
   sync(aliases: Alias[]): Promise<void>;
 }

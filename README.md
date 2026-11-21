@@ -16,6 +16,7 @@ The [domain aliases file](./domainAliases.json) is the single source of truth. A
 | --- | --- |
 | `netlify` | sets the Netlify domain aliases and writes `_redirects`; Netlify redirects and rewrites by itself |
 | `caprover` | runs as a Docker image that redirects and proxies by itself, and registers the app's custom domains on CapRover |
+| `cloudflare` | a DNS step before CapRover: points each host an alias claims for `caprover` at it with a CNAME |
 
 The static files can be reached by static.guilherr.me and the domain aliases can be found at redirects.guilherr.me.
 

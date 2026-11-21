@@ -12,5 +12,6 @@ When your output names a domain concept (issue title, test name, proposal), use 
 | TypeScript without a build step | 0004 |
 | Oxlint with a minimal ESLint | 0005 |
 | How the CapRover image is released | 0006 |
+| Cloudflare DNS and claimed hosts | 0007 |
 
 If your output contradicts an ADR, say so explicitly: _Contradicts ADR-0002 (...), but worth reopening because..._

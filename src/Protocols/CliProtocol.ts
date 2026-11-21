@@ -1,8 +1,8 @@
-import type { AdapterName } from "#app/Protocols/AliasProtocol.ts";
+import type { PlatformName } from "#app/Protocols/AdapterProtocol.ts";
 
 export type CliCommand = "sync" | "check";
 
 export type CliArguments = {
   command: CliCommand;
-  adapter?: AdapterName;
+  adapter?: PlatformName;
 };
