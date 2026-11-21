@@ -1,0 +1,12 @@
+.git
+.github
+node_modules
+docs
+tooling
+scripts
+
+
+.env*
+!.env.example
+*.tsbuildinfo
+.eslintcache

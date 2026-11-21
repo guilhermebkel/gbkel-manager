@@ -3,187 +3,224 @@
 		{
 			"from": "instance.guilherr.me",
 			"to": "https://captain.ec2.guilherr.me",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "linkedin.guilherr.me",
 			"to": "https://linkedin.com/in/guilhermebkel",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "gist.guilherr.me",
 			"to": "https://gist.github.com/guilhermebkel",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "emoji.guilherr.me",
 			"to": "https://nolanlawson.github.io/emoji-picker-element",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "medium.guilherr.me",
 			"to": "https://medium.com/@guilhermebkel",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "seo.guilherr.me/:url/:device",
 			"to": "https://googlechrome.github.io/lighthouse/viewer/?psiurl=https%3A%2F%2F:url&strategy=:device&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "cms.guilherr.me",
 			"to": "https://app.forestry.io/dashboard",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "whatsapp.guilherr.me",
 			"to": "https://mail.guilherr.me",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "blog.guilherr.me",
 			"to": "https://guilherr.me/blog",
-			"statusCode": 200
+			"statusCode": 200,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "blog.guilherr.me/*",
 			"to": "https://guilherr.me/:splat",
-			"statusCode": 200
+			"statusCode": 200,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "mail.guilherr.me",
 			"to": "/pages/mail",
-			"statusCode": 200
+			"statusCode": 200,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "behance.guilherr.me",
 			"to": "https://www.behance.net/guilhermebkel",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "deviantart.guilherr.me",
 			"to": "https://www.deviantart.com/ehrensk",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "search.guilherr.me",
 			"to": "https://search.google.com/search-console?resource_id=sc-domain%3Aguilherr.me",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "soundcloud.guilherr.me",
 			"to": "https://soundcloud.com/guilhermebkel",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "picpay.guilherr.me",
 			"to": "https://picpay.me/guilhermebkel",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "static.guilherr.me/*",
 			"to": "/static/:splat",
-			"statusCode": 200
+			"statusCode": 200,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "ga.guilherr.me",
 			"to": "https://analytics.google.com/analytics/web/#/report-home/a140879800w201912662p195809126",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "gtm.guilherr.me",
 			"to": "https://tagmanager.google.com/?authuser=1#/container/accounts/6002534864/containers/35105475/workspaces/3/tags",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "discord.guilherr.me",
 			"to": "https://discordapp.com/users/guilhermebkel",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "notion.guilherr.me/:pageId",
 			"to": "https://notion.so/guilhermebkel/:pageId",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "anime.guilherr.me",
 			"to": "https://myanimelist.net/profile/guilhermebkel",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "redirects.guilherr.me",
 			"to": "/redirects.html",
-			"statusCode": 200
+			"statusCode": 200,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "slug.guilherr.me",
 			"to": "https://slugify.online",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "comment.guilherr.me",
 			"to": "https://gbkel.disqus.com",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "review.guilherr.me",
 			"to": "https://app.refiner.io",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "spotify.guilherr.me",
 			"to": "https://open.spotify.com/user/12158673084",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "status.guilherr.me",
 			"to": "https://stats.uptimerobot.com/XkKKXcnGxo",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "delay.guilherr.me/:delayInMilliseconds/:url",
 			"to": "https://deelay.me/:delayInMilliseconds/:url",
-			"statusCode": 200
+			"statusCode": 200,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "steam.guilherr.me",
 			"to": "https://steamcommunity.com/id/Monstrayk",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "books.guilherr.me",
 			"to": "https://goodreads.com/guilhermebkel",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "readme.guilherr.me",
 			"to": "https://readme.so/pt/editor",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "correios.guilherr.me/:code",
 			"to": "https://rastreamento.correios.com.br/app/resultado.php?objeto=:code&mqs=S",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "meet.guilherr.me",
 			"to": "https://calendly.com/guilhermebkel",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "kindle.guilherr.me",
 			"to": "https://www.amazon.com.br/gp/digital/fiona/manage?ref_=hp_ss_qs_v3_dv_dc#/home/settings/payment",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "json.guilherr.me",
 			"to": "https://jsoncrack.com/editor",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		},
 		{
 			"from": "query.guilherr.me",
 			"to": "https://explain.dalibo.com",
-			"statusCode": 301
+			"statusCode": 301,
+			"adapters": ["caprover"]
 		}
 	]
 }
