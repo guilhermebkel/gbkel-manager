@@ -17,7 +17,7 @@ How an adapter serves `domainAliases.json`, and how to add a platform. The terms
 
 - The first alias in file order that matches wins.
 - `statusCode` `200` proxies; `301`, `302`, `303`, `307` and `308` redirect. Nothing else is valid.
-- A `to` that starts with `/` is a local target and needs `"adapters": ["netlify"]`.
+- A `to` that starts with `/` is a local target: the platform answers with one of the site's own files. Netlify serves its published folder; the CapRover image serves `/static/...`, `/pages/...` (a page without its extension is its `.html`), a folder listing for `/static/...` folders and `/redirects.html`, built on the spot from the loaded aliases. Anything else answers `404`.
 - **Moving a host to CapRover is opt-in.** A host is managed on CapRover (DNS record in Cloudflare, custom domain in the app) only when one of its aliases lists `"caprover"` in `adapters`. Without the field, an alias is open to every adapter but its DNS stays where it is (Netlify). Listing only `["caprover"]` takes the alias off Netlify's `_redirects` too.
 - `pnpm check:aliases` validates the file and what every adapter can serve, without network.
 
@@ -39,7 +39,7 @@ The `cloudflare` step stops with the host named when a host is outside `CLOUDFLA
 | --- | --- | --- |
 | `canProxy` | yes | yes |
 | `canMatchPathParams` (`:name`, `*`) | yes | yes |
-| `canServeLocalTargets` | yes | no |
+| `canServeLocalTargets` | yes | yes (only `static/`, `pages/` and the generated redirects page) |
 
 `sync` and `check` fail with `UnsupportedAliasError` when an alias needs a capability its adapter lacks and does not list another adapter only.
 

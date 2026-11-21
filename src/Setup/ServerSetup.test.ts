@@ -1,6 +1,9 @@
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { createServer, request } from "node:http";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import type { IncomingHttpHeaders, Server } from "node:http";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterAll, afterEach, describe, expect, it } from "vitest";
 import type { Alias } from "#app/Protocols/AliasProtocol.ts";
 import type { RunningServer } from "#app/Protocols/ServerProtocol.ts";
 import { ServerSetup } from "#app/Setup/ServerSetup.ts";
@@ -13,6 +16,11 @@ type RawResponse = {
 
 const LOCAL_HOST = "127.0.0.1";
 const closers: (() => Promise<void>)[] = [];
+const rootPrefix = join(tmpdir(), "server-root-");
+const publishedRoot = mkdtempSync(rootPrefix);
+const scriptFolder = join(publishedRoot, "static/js");
+mkdirSync(scriptFolder, { recursive: true });
+writeFileSync(join(scriptFolder, "app.js"), "console.log(1);");
 
 const listen = async (server: Server): Promise<number> => {
   await new Promise<void>((resolve) => {
@@ -42,7 +50,7 @@ const startOrigin = (): Promise<number> => {
 };
 
 const startServer = async (aliases: Alias[]): Promise<RunningServer> => {
-  const running = await ServerSetup.start(aliases, { host: LOCAL_HOST, port: 0 });
+  const running = await ServerSetup.start(aliases, { host: LOCAL_HOST, port: 0 }, publishedRoot);
   closers.push(running.stop);
   return running;
 };
@@ -65,6 +73,10 @@ const send = (port: number, host: string, path: string, method = "GET", body?: s
 
 afterEach(async () => {
   await Promise.all(closers.splice(0).map((close) => close()));
+});
+
+afterAll(() => {
+  rmSync(publishedRoot, { recursive: true, force: true });
 });
 
 describe("ServerSetup.start()", () => {
@@ -115,5 +127,25 @@ describe("ServerSetup.start()", () => {
     const health = await send(running.port, `${LOCAL_HOST}:${running.port}`, "/healthz");
 
     expect([unknown.status, health.status]).toStrictEqual([404, 200]);
+  });
+
+  it("serves a local target from the published folders, with its content type", async () => {
+    const running = await startServer([{ from: "static.example.com/*", to: "/static/:splat", statusCode: 200 }]);
+
+    const response = await send(running.port, "static.example.com", "/js/app.js");
+
+    expect([response.status, response.headers["content-type"], response.body]).toStrictEqual([
+      200,
+      "text/javascript; charset=utf-8",
+      "console.log(1);",
+    ]);
+  });
+
+  it("does not let a request climb out of the published folders", async () => {
+    const running = await startServer([{ from: "static.example.com/*", to: "/static/:splat", statusCode: 200 }]);
+
+    const response = await send(running.port, "static.example.com", "/%2e%2e/%2e%2e/package.json");
+
+    expect(response.status).toBe(404);
   });
 });

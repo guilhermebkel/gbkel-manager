@@ -59,6 +59,8 @@ There is no manual DNS step for a host in the Cloudflare zone. For a host outsid
 | `ALIASES_FILE` | `domainAliases.json` | the file read at start, and the fallback |
 | `ALIASES_RELOAD_SECONDS` | `300` | how often `ALIASES_URL` is read again; `0` turns the reload off |
 
+The image carries `static/` and `pages/`: aliases that point to a local path (`/static/...`, `/pages/mail`) are served from them, and `/redirects.html` is built from the aliases it has loaded. Nothing outside those folders is served.
+
 `/healthz` answers `200` for any host that no alias claims. An unknown host gets `404`; an origin that is down gets `502` with an empty body. The server runs locally with `node src/Setup/ServerSetup.ts`, and `curl -H "Host: linkedin.guilherr.me" http://localhost:3000/` shows a redirect.
 
 ## Rolling back

@@ -31,7 +31,7 @@ const createCapRoverAdapter = (): AdapterPort => {
   const password = EnvSetup.readRequired("CAPROVER_PASSWORD");
   const appName = EnvSetup.readRequired("CAPROVER_APP");
   const client = new CapRoverApiAdapter((request) => fetch(request), { url, password });
-  return new CapRoverAdapter((request) => fetch(request), { client, appName });
+  return new CapRoverAdapter({ fetchUpstream: (request) => fetch(request), remote: { client, appName } });
 };
 
 const createCloudflareAdapter = (): AdapterPort => {

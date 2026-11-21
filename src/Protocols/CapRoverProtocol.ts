@@ -1,3 +1,5 @@
+import type { LocalServer, UpstreamFetcher } from "#app/Protocols/ServeProtocol.ts";
+
 export type CapRoverDomain = {
   publicDomain: string;
   hasSsl: boolean;
@@ -13,6 +15,12 @@ export interface CapRoverClientPort {
 export type CapRoverRemote = {
   client: CapRoverClientPort;
   appName: string;
+};
+
+export type CapRoverOptions = {
+  fetchUpstream: UpstreamFetcher;
+  serveLocal?: LocalServer;
+  remote?: CapRoverRemote;
 };
 
 export type CapRoverApiSettings = {

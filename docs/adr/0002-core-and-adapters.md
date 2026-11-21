@@ -8,7 +8,7 @@ Domain aliases were tied to Netlify: the sync script called the Netlify API and 
 
 ## Decision
 
-`domainAliases.json` stays the single source of truth and keeps its shape. A pure core (`Errors`, `Protocols`, `Utils`, `Schemas`, `Generators`) validates it and defines the matcher once: how a host and a path pattern match and how `:param` and `*` go into `to`. The mode comes from the `statusCode` as Netlify reads it (`200` proxies, a redirect code redirects). An optional `adapters` list restricts an alias to some platforms; the aliases that point to a local file are restricted to Netlify.
+`domainAliases.json` stays the single source of truth and keeps its shape. A pure core (`Errors`, `Protocols`, `Utils`, `Schemas`, `Generators`) validates it and defines the matcher once: how a host and a path pattern match and how `:param` and `*` go into `to`. The mode comes from the `statusCode` as Netlify reads it (`200` proxies, a redirect code redirects). An optional `adapters` list restricts an alias to some platforms, and names the ones that take a host over (ADR 0007).
 
 There are two adapters. `NetlifyAdapter` writes `_redirects` and the Netlify domain aliases, and Netlify's own engine redirects. `CapRoverAdapter` answers requests inside the Docker image with the core (`handle`) and registers the custom domains of the CapRover app (`sync`). Each declares its capabilities and `sync` and `check` fail naming the alias when one is missing.
 

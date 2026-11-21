@@ -13,7 +13,7 @@ const ALIASES: Alias[] = [
 const failUpstream = () => Promise.reject(new Error("upstream must not be called"));
 
 const createAdapter = async (aliases: Alias[] = ALIASES) => {
-  const adapter = new CapRoverAdapter(failUpstream);
+  const adapter = new CapRoverAdapter({ fetchUpstream: failUpstream });
   await adapter.sync(aliases);
   return adapter;
 };
@@ -63,14 +63,11 @@ describe("CapRoverAdapter.sync()", () => {
     expect([oldHost.status, newHost.status]).toStrictEqual([404, 301]);
   });
 
-  it("refuses an alias with a local target that nothing restricts, keeping the old ones", async () => {
+  it("accepts an alias with a local target, which the image serves itself", async () => {
     const adapter = await createAdapter();
-    const local: Alias = { from: "l.example.com", to: "/x", statusCode: 301 };
+    const local: Alias = { from: "l.example.com", to: "/static/x", statusCode: 200 };
 
-    await expect(adapter.sync([local])).rejects.toThrow("caprover cannot serve l.example.com: it needs canServeLocalTargets");
-    const stillServed = await adapter.handle(new Request(GO_URL));
-
-    expect(stillServed.status).toBe(302);
+    await expect(adapter.sync([local])).resolves.toBeUndefined();
   });
 
   describe("when a CapRover is configured", () => {
@@ -92,7 +89,7 @@ describe("CapRoverAdapter.sync()", () => {
         enableSsl: (_app, domain) => Promise.resolve(void calls.push(`ssl ${domain}`)),
         removeCustomDomain: (_app, domain) => Promise.resolve(void calls.push(`remove ${domain}`)),
       };
-      return { calls, adapter: new CapRoverAdapter(failUpstream, { client, appName: APP }) };
+      return { calls, adapter: new CapRoverAdapter({ fetchUpstream: failUpstream, remote: { client, appName: APP } }) };
     };
 
     it("adds each missing host once and turns SSL on for it", async () => {

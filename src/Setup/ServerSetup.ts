@@ -7,6 +7,7 @@ import type { RuntimeAdapterPort } from "#app/Protocols/AdapterProtocol.ts";
 import type { Alias } from "#app/Protocols/AliasProtocol.ts";
 import type { ServerSettings, RunningServer } from "#app/Protocols/ServerProtocol.ts";
 import { AliasSourceSetup } from "#app/Setup/AliasSourceSetup.ts";
+import { LocalFilesSetup } from "#app/Setup/LocalFilesSetup.ts";
 import { EnvSetup } from "#app/Setup/EnvSetup.ts";
 import { AliasUtil } from "#app/Utils/AliasUtil.ts";
 
@@ -88,8 +89,16 @@ export class ServerSetup {
     }
   }
 
-  static async start(aliases: Alias[], settings: Pick<ServerSettings, "host" | "port">): Promise<RunningServer> {
-    const adapter = new CapRoverAdapter((request) => fetch(request));
+  static async start(
+    aliases: Alias[],
+    settings: Pick<ServerSettings, "host" | "port">,
+    root = process.cwd(),
+  ): Promise<RunningServer> {
+    let current = aliases;
+    const adapter = new CapRoverAdapter({
+      fetchUpstream: (request) => fetch(request),
+      serveLocal: (path) => LocalFilesSetup.serve(path, current, root),
+    });
     await adapter.sync(aliases);
     const server = createServer((incoming, outgoing) => {
       void ServerSetup.handleRequest(adapter, incoming, outgoing);
@@ -105,18 +114,23 @@ export class ServerSetup {
       });
       server.closeAllConnections();
     });
-    ServerSetup.startReload(adapter);
+    ServerSetup.startReload(adapter, (loaded) => {
+      current = loaded;
+    });
     return { port, stop };
   }
 
-  static startReload(adapter: RuntimeAdapterPort): void {
+  static startReload(adapter: RuntimeAdapterPort, onLoaded: (aliases: Alias[]) => void): void {
     const settings = ServerSetup.readSettings();
     if (settings.reloadIntervalMs <= 0 || settings.aliasesUrl === undefined) {
       return;
     }
     const timer = setInterval(() => {
       AliasSourceSetup.load(settings.aliasesFile, settings.aliasesUrl)
-        .then((aliases) => adapter.sync(aliases))
+        .then(async (aliases) => {
+          await adapter.sync(aliases);
+          onLoaded(aliases);
+        })
         .catch((error: unknown) => {
           console.error("alias reload failed, keeping the previous ones:", error instanceof Error ? error.message : "unknown error");
         });

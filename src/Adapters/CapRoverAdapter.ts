@@ -1,7 +1,7 @@
 import type { AdapterCapabilities, RuntimeAdapterPort } from "#app/Protocols/AdapterProtocol.ts";
 import type { AdapterName, Alias } from "#app/Protocols/AliasProtocol.ts";
 import type { CapRoverRemote } from "#app/Protocols/CapRoverProtocol.ts";
-import type { UpstreamFetcher } from "#app/Protocols/ServeProtocol.ts";
+import type { CapRoverOptions } from "#app/Protocols/CapRoverProtocol.ts";
 import { AliasUtil } from "#app/Utils/AliasUtil.ts";
 import { CapabilityUtil } from "#app/Utils/CapabilityUtil.ts";
 import { ServeUtil } from "#app/Utils/ServeUtil.ts";
@@ -14,33 +14,31 @@ export class CapRoverAdapter implements RuntimeAdapterPort {
   static readonly CAPABILITIES: AdapterCapabilities = {
     canProxy: true,
     canMatchPathParams: true,
-    canServeLocalTargets: false,
+    canServeLocalTargets: true,
   };
 
   readonly name: AdapterName = "caprover";
 
   readonly capabilities: AdapterCapabilities = CapRoverAdapter.CAPABILITIES;
 
-  private readonly fetchUpstream: UpstreamFetcher;
-
-  private readonly remote: CapRoverRemote | undefined;
+  private readonly options: CapRoverOptions;
 
   private served: Alias[] = [];
 
-  constructor(fetchUpstream: UpstreamFetcher, remote?: CapRoverRemote) {
-    this.fetchUpstream = fetchUpstream;
-    this.remote = remote;
+  constructor(options: CapRoverOptions) {
+    this.options = options;
   }
 
   async sync(aliases: Alias[]): Promise<void> {
     this.served = CapabilityUtil.assertServable(this.name, this.capabilities, aliases);
-    if (this.remote !== undefined) {
-      await this.syncDomains(this.remote, AliasUtil.selectClaimedBy(this.served, this.name));
+    if (this.options.remote !== undefined) {
+      await this.syncDomains(this.options.remote, AliasUtil.selectClaimedBy(this.served, this.name));
     }
   }
 
   async handle(request: Request): Promise<Response> {
-    const response = await ServeUtil.serve(this.served, request, { fetchUpstream: this.fetchUpstream });
+    const { fetchUpstream, serveLocal } = this.options;
+    const response = await ServeUtil.serve(this.served, request, { fetchUpstream, serveLocal });
     if (response !== null) {
       return response;
     }

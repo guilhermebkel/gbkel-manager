@@ -18,7 +18,7 @@ A `:name` segment in `from` that matches one path segment; its value goes into e
 What happens to a matching request, taken from the `statusCode`: `200` is a **proxy** (the target is fetched and the visitor stays on the original URL, Netlify's rewrite), a `301`, `302`, `303`, `307` or `308` is a **redirect** with that status. The query string of the request is kept on the target.
 
 **Local target**:
-A `to` that starts with `/`: the platform answers with one of its own files (`/static/:splat`, `/redirects.html`). Only Netlify can, so these aliases carry `"adapters": ["netlify"]`.
+A `to` that starts with `/`: the platform answers with one of its own files (`/static/:splat`, `/pages/mail`, `/redirects.html`). Netlify serves its published folder; the CapRover image serves `static/`, `pages/` and the generated redirects page, and never anything outside them.
 
 **Adapters (field)**:
 The optional list of adapters that serve an alias (`netlify`, `caprover`). Without it, every adapter serves the alias. An adapter ignores the aliases that name only others.
