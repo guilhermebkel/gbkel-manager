@@ -97,4 +97,13 @@ describe("CloudflareAdapter.sync()", () => {
 
     await expect(adapter.sync([lookalike])).rejects.toThrow("evilexample.com is not in the Cloudflare zone");
   });
+
+  it("refuses a zone id where the zone name belongs, saying what to set", () => {
+    const client = {} as CloudflareClientPort;
+    const zoneId = "9c7232f2e76c334a863497cad9081f67";
+
+    expect(() => new CloudflareAdapter(client, { zoneName: zoneId, target: TARGET })).toThrow(
+      "CLOUDFLARE_ZONE must be the zone name, such as example.com, not the zone id",
+    );
+  });
 });
