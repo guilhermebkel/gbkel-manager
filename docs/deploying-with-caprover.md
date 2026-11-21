@@ -26,6 +26,15 @@ The version commit is pushed by `github-actions[bot]`, so a rule that blocks dir
 
 The package starts private on GitHub: make it public (Packages, the package, Package settings, Change visibility) or give CapRover a registry login with `read:packages`.
 
+## First time, in order
+
+1. Merge. The `Sync domains` workflow is skipped while the four variables below are unset.
+2. Set the variables and secrets above.
+3. Run `Release`: it creates the CapRover app and deploys the image. Make the package public.
+4. Claim a first host (`"adapters": ["caprover"]`) and merge: `Sync domains` points its DNS and registers the domain.
+
+The `Sync domains` workflow needs the app to exist, so it comes after the first release.
+
 ## Changing an alias
 
 Edit `domainAliases.json` and merge to `main`. Two things follow, with no release:

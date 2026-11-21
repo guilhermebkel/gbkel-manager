@@ -14,8 +14,10 @@ permissions:
   contents: read
 
 # Why: the server in the image reloads domainAliases.json by itself; only the DNS records and the CapRover custom domains (with their certificates) need the APIs, and CapRover checks the DNS when it adds a domain, so Cloudflare goes first.
+# Why: until the variables exist (and the first release has created the CapRover app) there is nothing to sync, and a red run on every merge would only hide a real failure.
 jobs:
   sync:
+    if: ${{ vars.CAPROVER_URL != '' && vars.CAPROVER_APP != '' && vars.CLOUDFLARE_ZONE != '' && vars.CLOUDFLARE_CNAME_TARGET != '' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
